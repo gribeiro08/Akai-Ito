@@ -1,0 +1,19 @@
+tem que fazer o sql ;-;
+
+o nome do database deve ser akaiito
+nele tera duas tabelas: user e user_adm
+
+na tabela user tera 7 colunas
+1 id : int (A.I)
+2 username : varchar(50, NULL)
+3 data_nasc : date
+4 story_progress : int(50)
+5 usertype : varchar(50, NULL)
+6 full_name : varchar(50, NULL)
+7 password : varchar(50, NULL)
+
+na tabela user_adm tera 4 colunas
+1 id : int (A.I)
+2 username : varchar(50)
+3 usertype : varchar(50)
+4 password : varchar(50)
