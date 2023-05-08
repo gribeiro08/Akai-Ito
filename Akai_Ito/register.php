@@ -1,15 +1,8 @@
 <?php
 
 session_start();
-$host="localhost";
-
-    $user="root";
-
-    $password="";
-
-    $db="akaiito";
-
-    $data=mysqli_connect($host,$user,$password,$db);
+    
+include("conexao.php");
 
     if(isset($_POST['register']))
     {
@@ -17,17 +10,7 @@ $host="localhost";
         $user_full_name=$_POST['name'];
         $user_data_nasc=$_POST['data_nasc'];
         $user_password=$_POST['password'];
-        $user_type=$_POST['usertype']; /*addlashes($_POST['usertype_select']);
-
-        switch($user_type)
-        {
-            case '1':
-                $user_type = 'player';
-            break;
-            case '2':
-                $user_type = 'anunciante';
-            break;
-        } */
+        $user_type=$_POST['usertype_select'];
 
         $sql="INSERT INTO user(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";
         
@@ -43,6 +26,54 @@ $host="localhost";
             echo "Upload Failed";
         }
 
+    }
+
+    if($data===false)
+{
+    die("connection error");
+}    
+
+    if($_SERVER["REQUEST_METHOD"]=="POST")
+    {
+        $name = $_POST['username'];
+
+        $pass = $_POST['password'];
+
+        $sql="select * from user where username='".$name."' AND password='".$pass."' ";
+
+        $result=mysqli_query($data,$sql);
+
+        $row=mysqli_fetch_array($result);
+
+        if($row["usertype"]=="anunciante")
+        {
+
+            $_SESSION['username']=$name;
+
+            $_SESSION['usertype']="anunciante";
+
+            header("location:anunciantehome.php");
+        }
+
+        elseif($row["usertype"]=="player")
+        {
+            
+            $_SESSION['username']=$name;
+
+            $_SESSION['usertype']="player";
+
+            header("location:playerhome.php");
+        }
+
+        else
+        {
+
+            $message= "username or password do not match";
+        
+            $_SESSION['loginMessage']=$message;
+
+            header("location:login.php");
+        }
     }
 
 ?>
@@ -98,30 +129,57 @@ $host="localhost";
 
     <form action="register.php" method="POST">  
         <div class="container">   
-            <label>Username : </label>   
-            <input type="text" placeholder="Insira username" name="username" required>  
-            <p></p>
+            <label>Nome de usuario : </label>   
+            <input type="text" placeholder="Insira nome de usuario" name="username" required>  
+            <br><br>
 
-            <label>Full name : </label>   
+            <label>Nome completo : </label>   
             <input type="text" placeholder="Insira nome completo" name="name" required>  
-            <p></p>
+            <br><br>
 
-            <label>Birth Date : </label>   
-            <input type="date" placeholder="Insira data de nascimento" name="data_nasc" required>
-            <p></p>
+           <label>Data de nascimento : </label>   
+            <input type="date" min="1850-01-01" max="2012-12-30" placeholder="Insira data de nascimento" name="data_nasc" required>
+            <br><br> 
 
-<!--           <label>User Type : </label> 
+           <label>Tipo de usuario : </label> 
             <select name="usertype_select" id="usertype">
-                <option value="1">player</option>
-                <option value="2">anunciante</option>
-            </select> -->
+                <option value="player">player</option>
+                <option value="anunciante">anunciante</option>
+            </select> 
+            <br><br> 
 
-            <label>Usertype (player ou anunciante) : </label>   
-            <input type="text" placeholder="Insira tipo de usuario" name="usertype" required>  
-            <p></p>
+            <label>Senha : </label>  
+            <br>     
+            <label>Formato de senha exigido : </label>   
+            <ol> 
+                <li>8 caracteres no mínimo</li>
+                <li>1 Letra Maiúscula no mínimo</li>
+                <li>1 Número no mínimo</li>
+                <li>1 Símbolo no mínimo: $*&@#</li>
+                <li>nao permite sequencia de caracteres repetidos</li>
+            </ol>
+            <input type="password" placeholder="Insira a senha" name="password" id="password" required pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/">
+            
+            <label>Confirme sua senha : </label>   
+            <input type="password" placeholder="Insira a senha novamente" name="password_confirmation" id="confirm_password" required>
 
-            <label>Password : </label>   
-            <input type="password" placeholder="Insira senha" name="password" required>  
+            <script>
+                var password = document.getElementById("password")
+                , confirm_password = document.getElementById("confirm_password");   
+
+                function validatePassword(){
+                if(password.value != confirm_password.value) {
+                    confirm_password.setCustomValidity("Senhas diferentes!");
+                } else {
+                    confirm_password.setCustomValidity('');
+                }
+                }
+
+                password.onchange = validatePassword;
+                confirm_password.onkeyup = validatePassword;
+
+
+            </script>
 
             <input class="aaa" type="submit" name="register" value="Register">  
         </div>   
