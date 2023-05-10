@@ -12,69 +12,74 @@ include("conexao.php");
         $user_password=$_POST['password'];
         $user_type=$_POST['usertype_select'];
 
-        $sql="INSERT INTO user(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";
-        
-        $result=mysqli_query($data,$sql);
+        $check="SELECT * FROM user WHERE username='$username'";
+        $check_user=mysqli_query($data,$check);
+        $row_count=mysqli_num_rows($check_user);
 
-        if($result)
-        {
-            echo "Data Uploaded Succcessfully";
-        }
-        
-        else
-        {
-            echo "Upload Failed";
-        }
+            if($row_count==1)
+            {
+                echo "<script type='text/javascript'>
+                    alert('Nome de usuário já existente.');
+                    </script>";
+            }
+            else 
+            {
+                $sql="INSERT INTO user(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
+                $result=mysqli_query($data,$sql);
+
+                if($result)
+                {
+                    echo "<script type='text/javascript'>
+                    alert('Data Uploaded Succcessfully');
+                    </script>";
+                    
+                    
+                    if($data===false)
+                    {
+                        die("connection error");
+                    }    
+
+                    if($_SERVER["REQUEST_METHOD"]=="POST")
+                    {
+                        $name = $_POST['username'];
+                        $pass = $_POST['password'];
+                        $sql="select * from user where username='".$name."' AND password='".$pass."' ";
+                        $result=mysqli_query($data,$sql);
+                        $row=mysqli_fetch_array($result);
+
+                        if($row["usertype"]=="anunciante")
+                        {
+
+                            $_SESSION['username']=$name;
+                            $_SESSION['usertype']="anunciante";
+                            header("location:anunciantehome.php");
+                        }
+
+                        elseif($row["usertype"]=="player")
+                        {
+                            
+                            $_SESSION['username']=$name;
+                            $_SESSION['usertype']="player";
+                            header("location:playerhome.php");
+                        }
+
+                        else
+                        {
+
+                            $message= "username or password do not match";       
+                            $_SESSION['loginMessage']=$message;
+                            header("location:login.php");
+                        }
+                    }
+                }
+            else
+            {
+                echo "Upload Failed";
+            }
 
     }
 
-    if($data===false)
-{
-    die("connection error");
-}    
-
-    if($_SERVER["REQUEST_METHOD"]=="POST")
-    {
-        $name = $_POST['username'];
-
-        $pass = $_POST['password'];
-
-        $sql="select * from user where username='".$name."' AND password='".$pass."' ";
-
-        $result=mysqli_query($data,$sql);
-
-        $row=mysqli_fetch_array($result);
-
-        if($row["usertype"]=="anunciante")
-        {
-
-            $_SESSION['username']=$name;
-
-            $_SESSION['usertype']="anunciante";
-
-            header("location:anunciantehome.php");
-        }
-
-        elseif($row["usertype"]=="player")
-        {
-            
-            $_SESSION['username']=$name;
-
-            $_SESSION['usertype']="player";
-
-            header("location:playerhome.php");
-        }
-
-        else
-        {
-
-            $message= "username or password do not match";
-        
-            $_SESSION['loginMessage']=$message;
-
-            header("location:login.php");
-        }
-    }
+}
 
 ?>
 
@@ -158,8 +163,8 @@ include("conexao.php");
                 <li>1 Símbolo no mínimo: $*&@#</li>
                 <li>nao permite sequencia de caracteres repetidos</li>
             </ol>
-            <input type="password" placeholder="Insira a senha" name="password" id="password" required pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/">
-            
+            <input type="password" placeholder="Insira a senha" name="password" id="password"   required >
+            <!-- pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/" n funciona aaaaaaaaaaaa-->
             <label>Confirme sua senha : </label>   
             <input type="password" placeholder="Insira a senha novamente" name="password_confirmation" id="confirm_password" required>
 

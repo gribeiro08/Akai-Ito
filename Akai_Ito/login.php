@@ -31,7 +31,7 @@
     <div>
 
     <form action="login_check.php" method="POST">  
-        <div class="container">   
+        <div class="container_log">   
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required>  
             <label>Password : </label>   

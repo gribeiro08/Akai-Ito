@@ -50,7 +50,7 @@ button {
     }   
         
      
- .container {   
+ .containera {   
         padding: 25px;   
         background-color: white;  
     }   
@@ -90,7 +90,7 @@ button {
     <div>
 
     <form action="login_check_adm.php" method="POST">  
-        <div class="container">   
+        <div class="containera">   
             <label>Username : </label>   
             <input type="text" placeholder="Enter Username" name="username" required>  
             <label>Password : </label>   
