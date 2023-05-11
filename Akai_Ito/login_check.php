@@ -35,6 +35,14 @@ if($data===false)
             header("location:playerhome.php");
         }
 
+        elseif($row["usertype"]=="admin")
+        {
+            
+            $_SESSION['username']=$name;
+            $_SESSION['usertype']="admin";
+            header("location:adminhome.php");
+        }
+
         else
         {
 

@@ -13,6 +13,9 @@
 
 </head>
 <body>
+    
+<section class="min-vh-100 gradient-custom">
+
     <nav>
 
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -22,12 +25,14 @@
         <li><a href="anunciantehome.php">Inicio</a></li>
         <li><a href="anunciante_anuncios.php">Anuncios</a></li>
         <li><a href="anunciante_perfil.php">Perfil</a></li>
-        <li><a href="logout.php" class="btn btn-danger">Logout</a></li>
+        <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
     </ul>
     </nav>
     <p><br><br><br><br></p>
 
-    <h1>Perfil do jogador</h1>
+    <div style="text-align:center">
+        <h1 class="titulo_pagina">Perfil do Anunciante</h1>
+    </div>
 
     <?php
     session_start();
@@ -53,11 +58,13 @@
 
     if(isset($_GET['id']))
     { ?>
-        <h2>Tem certeza que deseja deletar esta conta?</h2> 
-        <form action="" method="post">
-            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-            <input type="submit" name="deletar" value="Deletar">
-        </form>
+        <div class="aviso_delete" style="text-align:center">
+            <h4>Tem certeza que deseja deletar esta conta?</h4> 
+            <form action="" method="post" >
+                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                <input type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
+            </form>
+        </div>
 
     <?php } 
 
@@ -86,17 +93,40 @@
 
         
     
+<div class="quadrado">
+    <header class="perfil">
+<!--      <img class="perfil-foto" src="#" /> -->
+      <div class="titulo">
+        <h1>Nome de usuario: <?php echo $name_log; ?></h1>
+        <h3>Nome completo: <?php echo $full_name_log; ?></h3>
+      </div>
+    </header>
+
+    <main class="projetos">
+            <br>
+        <h4>ID do usuario: <?php echo $id_log; ?></h4>
+            <br>
+        <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
+            <br>
+        <h4>Senha: <?php echo $password_log; ?></h4>
+  
+    </main>
+  </div>
+
+  
     <br>
-    <div>
+<!--    <div>
         <h4>ID do usuario: <?php echo $id_log; ?></h4>
         <h4>Nome de usuario: <?php echo $name_log; ?></h4>
         <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
         <h4>Nome completo: <?php echo $full_name_log; ?></h4>
         <h4>Senha: <?php echo $password_log; ?></h4>
+    </div> -->
+    
+    <div style="text-align:center">
+        <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
+        <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
     </div>
-
-    <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="btn btn-danger">Editar conta</a></li>
-    <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="btn btn-danger">Deletar conta</a></li>
     
        
 

@@ -1,5 +1,6 @@
 <?php
 
+error_reporting(0);
 session_start();
     
 include("conexao.php");
@@ -83,14 +84,14 @@ include("conexao.php");
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AAA</title>
+    <title>Login Form</title>
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -98,63 +99,81 @@ include("conexao.php");
 
 </head>
 <body>
-    <nav>
- 
-        <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-        <label class="name">Akai Ito</label>
+   
 
-        <ul>
-            <li><a href="index.php">Home</a></li>
-            <li><a href="">Contato</a></li>
-            <li><a href="login.php" class="btn btn-danger">Login</a></li>
-        </ul>
-    </nav>   
-    
-    <div style="text-align:center" class="form_title"> 
-    <br><br><br><br><br>
-       <h1> Resgistrar </h1> 
 
-    </div> 
-    
-    <div>
+<section class="min-vh-100 gradient-custom">
 
-    <form action="register.php" method="POST">  
-        <div class="container">   
-            <label>Nome de usuario : </label>   
-            <input type="text" placeholder="Insira nome de usuario" name="username" required>  
-            <br><br>
+  <nav>
+  
+    <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
+    <label class="name">Akai Ito</label>
 
-            <label>Nome completo : </label>   
-            <input type="text" placeholder="Insira nome completo" name="name" required>  
-            <br><br>
+    <ul>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="">Contato</a></li>
+    </ul>
+  </nav>
 
-           <label>Data de nascimento : </label>   
-            <input type="date" min="1850-01-01" max="2012-12-30" placeholder="Insira data de nascimento" name="data_nasc" required>
-            <br><br> 
 
-           <label>Tipo de usuario : </label> 
-            <select name="usertype_select" id="usertype">
-                <option value="player">player</option>
-                <option value="anunciante">anunciante</option>
-            </select> 
-            <br><br> 
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-            <label>Senha : </label>  
-            <br>  
-            <label>Formato de senha exigido : </label>
-            <ol>        
+            <div class="mb-md-5 mt-md-4 pb-5">
+            <form action="register.php" method="POST">
+              <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
+              <p class="text-white-50 mb-5">Por favor insira seus dados!</p>
             
-                <li>8 caracteres no mínimo</li>
-                <li>1 Letra Maiúscula no mínimo</li>
-                <li>1 Letra Minuscula no mínimo</li>
-                <li>1 Número no mínimo</li>
-            </ol> 
-            <input type="password" placeholder="Insira a senha" name="password" id="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})"  required >
-            
-            <label>Confirme sua senha : </label>   
-            <input type="password" placeholder="Insira a senha novamente" name="password_confirmation" id="confirm_password" required>
+              <!--Nome de usuario-->    
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="typeUsername" name="username" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typeUsername">Nome de usuário</label>
+              </div>
 
-            <script>
+              <!--Nome completo-->  
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="typeFullName" name="name" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typeFullName">Nome completo</label>
+              </div>
+
+              <!--Data de nascimento-->  
+              <div class="form-outline form-white mb-4">
+                <input type="date" min="1850-01-01" max="2012-12-30" id="data_nasc" name="data_nasc" class="form-control form-control-lg" required/>
+                <label class="form-label" for="data_nasc">Data de nascimento</label>
+              </div>
+
+              <!--Tipo de usuario-->  
+              <div class="form-outline form-white mb-4">
+                <select id="usertype" name="usertype_select" class="form-control form-control-lg" required>
+                <option value="" disabled selected>Selecione um tipo</option>
+                <option value="player">Jogador</option>
+                <option value="anunciante">Anunciante</option>
+                </select>
+                <label class="form-label" for="usertype">Selecione o tipo de conta</label>
+              </div>
+
+              <!--Senha-->  
+              <div class="form-outline form-white mb-4">
+                <input type="password" name="password" id="password" class="form-control form-control-lg" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})" required/>
+                <label class="form-label" for="password">Senha <br> Formato de senha exigido :</label>
+                    <ol>        
+                        <li>8 caracteres no mínimo</li>
+                        <li>1 Letra Maiúscula no mínimo</li>
+                        <li>1 Letra Minuscula no mínimo</li>
+                        <li>1 Número no mínimo</li>
+                    </ol> 
+              </div>
+
+              <!--Confirmaçao de senha--> 
+              <div class="form-outline form-white mb-4">
+                <input type="password" name="password_confirmation" id="confirm_password" class="form-control form-control-lg" required/>
+                <label class="form-label" for="confirm_password">Confirme sua senha</label>
+              </div>
+
+              <!--Verifica confirmaçao de senha-->
+              <script>
                 var password = document.getElementById("password")
                 , confirm_password = document.getElementById("confirm_password");   
 
@@ -168,15 +187,26 @@ include("conexao.php");
 
                 password.onchange = validatePassword;
                 confirm_password.onkeyup = validatePassword;
-
-
             </script>
 
-            <input class="aaa" type="submit" name="register" value="Register">  
-        </div>   
-    </form>  
+              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Esqueceu sua senha?</a></p>
 
+              <button class="btn btn-outline-light btn-lg px-5" type="submit" name="register">Registrar</button>
+
+            </div>
+
+            <div>
+              <p class="mb-0">Não possui uma conta? <a href="#!" class="text-white-50 fw-bold">Registre-se</a>
+              </p>
+            </div>
+            </form>
+
+            </div>
+        </div>
+      </div>
     </div>
 
-</body>     
-</html>   
+</section>
+
+</body>
+</html>

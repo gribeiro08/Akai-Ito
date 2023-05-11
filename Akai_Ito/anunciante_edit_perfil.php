@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login Form</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -13,56 +13,69 @@
 
 </head>
 <body>
-    <nav>
- 
-        <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-        <label class="name">Akai Ito</label>
+   
+
+
+<section class="h-auto gradient-custom">
+
+  <nav>
+  
+    <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
+    <label class="name">Akai Ito</label>
 
         <ul>
             <li><a href="anunciantehome.php">Inicio</a></li>
             <li><a href="anunciante_anuncios.php">Anuncios</a></li>
             <li><a href="anunciante_perfil.php">Perfil</a></li>
-            <li><a href="logout.php" class="btn btn-danger">Logout</a></li>
+            <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
-    </nav>   
-    
-    <div style="text-align:center" class="form_title"> 
-    <br><br><br><br><br>
-       <h1> Editar </h1> 
+  </nav>
 
-    </div> 
-    
-    <div>
-    
-<?php
+  <?php
  session_start();
  include("conexao.php");
 
-
-
-//Funcao para editar o usuario ?>
-<?php    if(isset($_GET['id']))
+ if(isset($_GET['id']))
         { ?>
-<form action="" method="POST">  
-        <div class="container">   
-            <label>Nome de usuario : </label>   
-            <input type="text" placeholder="Insira nome de usuario" name="new_username" required>  
-            <br><br>
 
-            <label>Nome completo : </label>   
-            <input type="text" placeholder="Insira nome completo" name="new_name" required>  
-            <br><br>
+  <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
 
-           <label>Data de nascimento : </label>   
-            <input type="date" min="1850-01-01" max="2012-12-30" placeholder="Insira data de nascimento" name="new_data_nasc" required>
-            <br><br> 
+            <div class="mb-md-5 mt-md-4 pb-5">
+            <form action="anunciante_edit_perfil.php" method="POST">
+              <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
+              <p class="text-white-50 mb-5">Por favor insira seus dados!</p>
+            
+              <!--Nome de usuario-->    
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="new_username" name="new_username" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_username">Nome de usuário</label>
+              </div>
 
-            <label>Tem certeza que deseja editar sua conta? (Após esta ação você deverá realizar login novamente com seu novo nome de usuário)</label>
-                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                <input class="aaa" type="submit" name="editar" value="Editar">
-        
-        <?php } 
-        //Funcao que verifica login
+              <!--Nome completo-->  
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="new_name" name="new_name" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_name">Nome completo</label>
+              </div>
+
+              <!--Data de nascimento-->  
+              <div class="form-outline form-white mb-4">
+                <input type="date" min="1850-01-01" max="2012-12-30" id="new_data_nasc" name="new_data_nasc" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_data_nasc">Data de nascimento</label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" class="form-control form-control-lg" required/>
+                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="editar" value="Editar">
+              </div>
+
+            </div>
+            </form>
+
+<?php } 
+//Funcao que verifica login
 
     $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
     $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
@@ -102,6 +115,13 @@
                 </script>    
             <?php } 
             } ?>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+</section>
 
 </body>
 </html>

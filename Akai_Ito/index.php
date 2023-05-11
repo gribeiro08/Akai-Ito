@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<section class="vh-auto gradient-custom">
+<section class="vh-100   gradient-custom">
     <nav>
  
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -21,8 +21,8 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="">Contato</a></li>
-            <li><a href="register.php" class="btn btn-danger">Register</a></li>
-            <li><a href="login.php" class="btn btn-danger">Login</a></li>
+            <li><a href="register.php" class="custom-btn btn-4">Register</a></li>
+            <li><a href="login.php" class="custom-btn btn-4">Login</a></li>
         </ul>
     </nav>
 
@@ -66,54 +66,7 @@
         </div>  
 
     </div>
-
-    <div>
-        <p><br><br><br><br></p>
-    </div>
-
-    <div style="text-align:center">
-        <h1>Anuncios?</h1>
-    </div>
-
-    <div class="container">
-
-        <div class="row">
-
-            <div class="col-md-4">
-
-                <img class="welcome_img" src="img/exemplo1.jpg">
-                <h3>gatinho</h3>  
-
-            </div>
-
-            <div class="col-md-4">
-                
-                <img class="welcome_img" src="img/exemplo1.jpg">
-                <h3>gatinho</h3>               
-
-            </div>
-
-            <div class="col-md-4">
-                
-                <img class="welcome_img" src="img/exemplo1.jpg">
-                <h3>gatinho</h3>   
-
-            </div>
-
-            <div>
-                
-                <p><br><br><br><br></p>
-                <a href="login_adm.php" class="bt_adm_login">Login</a>
-            </div>
-        </div>
-
-    </div>
-
-
-
-    
-
-    
+ 
 </section>  
 </body>
 </html>
