@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,5 +28,57 @@
     <p><br><br><br><br></p>
 
     <h1>Perfil do jogador</h1>
+
+    <?php
+    session_start();
+    include("conexao.php");
+    
+    $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
+    $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
+
+    
+    $dados = mysqli_query($data,"select * from user WHERE username = '$l'");
+    while ($d = mysqli_fetch_array($dados)){
+        $id_log = $d['id'];
+        $name_log = $d['username'];
+        $data_nasc_log = $d['data_nasc'];
+        $full_name_log = $d['full_name'];
+        $password_log = $d['password'];
+    }
+
+    //O deletar e Update não estao funcionais ;-;
+    //delete ta me matando aaaaaaaa
+
+    if(isset($_GET['id']))
+    { ?>
+        <h2>Tem certeza que deseja deletar esta conta?</h2> 
+        <form action="" method="post">
+            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+            <input type="submit" name="deletar" value="Deletar">
+        </form>
+
+    <?php } 
+
+        if(isset($_POST['deletar']))
+        {
+            $query = "DELETE FROM user WHERE id=". (int) $_POST['id'];
+        }
+
+    ?>
+    
+    <br>
+    <div>
+        <h4>ID do usuario: <?php echo $id_log; ?></h4>
+        <h4>Nome de usuario: <?php echo $name_log; ?></h4>
+        <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
+        <h4>Nome completo: <?php echo $full_name_log; ?></h4>
+        <h4>Senha: <?php echo $password_log; ?></h4>
+    </div>
+
+    <a href="" class="btn btn-danger">Editar conta</a></li>
+    <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="btn btn-danger">Deletar conta</a></li>
+    
+       
+
 </body>
 </html>

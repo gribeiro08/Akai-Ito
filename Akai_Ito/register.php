@@ -98,21 +98,6 @@ include("conexao.php");
 
 </head>
 <body>
-
-    <nav>
- 
-        <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-        <label class="name">Akai Ito</label>
-
-        <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Contato</a></li>
-            <li><a href="register.php" class="btn btn-danger">Register</a></li>
-        </ul>
-    </nav>
-
-
- <body>
     <nav>
  
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -121,6 +106,7 @@ include("conexao.php");
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="">Contato</a></li>
+            <li><a href="login.php" class="btn btn-danger">Login</a></li>
         </ul>
     </nav>   
     
