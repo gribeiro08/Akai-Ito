@@ -13,13 +13,11 @@
 
 </head>
 <body>
-   
-
-
 <section class="h-auto gradient-custom">
 
-  <nav>
+<!--navbar-->
   
+<nav>
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
 
@@ -29,7 +27,7 @@
     </ul>
   </nav>
 
-
+<!--form de login-->
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">

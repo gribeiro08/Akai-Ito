@@ -13,20 +13,20 @@
 
 </head>
 <body>
-
 <section class="min-vh-100 gradient-custom">
 
+<!--navbar-->
+
   <nav>
-  
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
-
     <ul>
         <li><a href="index.php">Inicio</a></li>
         <li><a href="">Contato</a></li>
     </ul>
   </nav>
 
+<!--form de login-->
 
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">

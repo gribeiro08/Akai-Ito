@@ -34,14 +34,13 @@ session_start();
 
 </head>
 <body>
-
 <section class="min-vh-100 gradient-custom">
 
-    <nav>
+<!--navbar-->
 
+    <nav>
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
         <label class="name">Akai Ito</label>
-
         <ul>
             <li><a href="">Inicio</a></li>
             <li><a href="player_game.php">Jogo</a></li>
@@ -50,6 +49,8 @@ session_start();
         </ul>
     </nav>
 <p><br><br><br><br></p>
+
+<!--titulo-->
 
     <div style="text-align:center">
         <h1 class="titulo_pagina">Seja bem vindo Jogador</h1>

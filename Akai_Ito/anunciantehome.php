@@ -33,22 +33,24 @@ session_start();
 
 </head>
 <body>
-
 <section class="vh-100 gradient-custom">
+
+<!--navbar-->
     <nav>
+        <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
+        <label class="name">Akai Ito</label>
 
-    <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-    <label class="name">Akai Ito</label>
-
-    <ul>
-        <li><a href="anunciantehome.php">Inicio</a></li>
-        <li><a href="anunciante_anuncios.php">Anuncios</a></li>
-        <li><a href="anunciante_perfil.php">Perfil</a></li>
-        <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
-    </ul>
+        <ul>
+            <li><a href="anunciantehome.php">Inicio</a></li>
+            <li><a href="anunciante_anuncios.php">Anuncios</a></li>
+            <li><a href="anunciante_perfil.php">Perfil</a></li>
+            <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
+        </ul>
     </nav>
 
 <p><br><br><br><br></p>
+
+<!--titulo-->
 
     <div style="text-align:center">
         <h1 class="titulo_pagina">Seja bem vindo Anunciante</h1>

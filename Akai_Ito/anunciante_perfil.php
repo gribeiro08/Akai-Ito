@@ -12,10 +12,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </head>
-<body>
-    
+<body> 
 <section class="min-vh-100 gradient-custom">
 
+<!--navbar-->
     <nav>
 
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -34,9 +34,11 @@
         <h1 class="titulo_pagina">Perfil do Anunciante</h1>
     </div>
 
-    <?php
-    session_start();
-    include("conexao.php");
+<?php
+/*conexao com o banco de dados e inicio da sessao*/
+
+session_start();
+include("conexao.php");
  
 //Funcao que verifica login
 
@@ -91,11 +93,11 @@
         } ?>
 
 
-        
-    
+<!--display do perfil-->
+
 <div class="quadrado">
     <header class="perfil">
-<!--      <img class="perfil-foto" src="#" /> -->
+    <!--<img class="perfil-foto" src="#" /> -->
       <div class="titulo">
         <h1>Nome de usuario: <?php echo $name_log; ?></h1>
         <h3>Nome completo: <?php echo $full_name_log; ?></h3>
@@ -115,14 +117,17 @@
 
   
     <br>
-<!--    <div>
+<!--  Isso aqui faz o print direto das informaçoes / melhorei ali em cima
+    
+    <div>
         <h4>ID do usuario: <?php echo $id_log; ?></h4>
         <h4>Nome de usuario: <?php echo $name_log; ?></h4>
         <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
         <h4>Nome completo: <?php echo $full_name_log; ?></h4>
         <h4>Senha: <?php echo $password_log; ?></h4>
     </div> -->
-    
+
+<!--botao deletar roda o if dentro desta mesma pagina, botao editar direciona para a pagina de ediçao-->    
     <div style="text-align:center">
         <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
         <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>

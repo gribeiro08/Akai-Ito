@@ -13,16 +13,13 @@
 
 </head>
 <body>
-   
-
-
 <section class="min-vh-100 gradient-custom">
 
+<!--navbar-->
+
   <nav>
-  
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
-
         <ul>
             <li><a href="playerhome.php">Inicio</a></li>
             <li><a href="player_game.php">Jogo</a></li>
@@ -31,7 +28,8 @@
         </ul>
   </nav>
 
-  <?php
+<?php
+/*conexao com o banco de dados e incicio de sessao */
  session_start();
  include("conexao.php");
 

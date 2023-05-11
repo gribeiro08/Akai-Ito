@@ -35,6 +35,8 @@ session_start();
 <body>
 
 <section class="min-vh-100 gradient-custom">
+
+<!--nav bar-->
     <nav>
  
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -48,7 +50,7 @@ session_start();
     </nav>
     
     <p><br><br><br><br></p>
-
+<!--titulo-->
     <div style="text-align:center">
         <h1 class="titulo_pagina">Seja bem vindo Administrador</h1>
     </div>

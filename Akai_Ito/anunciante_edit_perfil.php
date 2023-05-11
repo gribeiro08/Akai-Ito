@@ -13,11 +13,9 @@
 
 </head>
 <body>
-   
-
-
 <section class="h-auto gradient-custom">
 
+<!--navbar-->
   <nav>
   
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -31,7 +29,8 @@
         </ul>
   </nav>
 
-  <?php
+<?php
+/*conexao com o banco de dados e inicio da sessao*/
  session_start();
  include("conexao.php");
 

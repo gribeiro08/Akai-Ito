@@ -13,14 +13,12 @@
 
 </head>
 <body>
-
 <section class="min-vh-100 gradient-custom">
 
+<!--navbar-->
     <nav>
-
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
         <label class="name">Akai Ito</label>
-
         <ul>
             <li><a href="playerhome.php">Inicio</a></li>
             <li><a href="player_game.php">Jogo</a></li>
@@ -29,6 +27,8 @@
         </ul>
     </nav>
     <p><br><br><br><br></p>
+
+<!--titulo-->
 
     <div style="text-align:center">
         <h1 class="titulo_pagina">Perfil do jogador</h1>
@@ -91,11 +91,11 @@
         <?php } 
         } ?>
 
-
+<!--display do perfil do user-->
         
 <div class="quadrado">
     <header class="perfil">
-<!--      <img class="perfil-foto" src="#" /> -->
+    <!--<img class="perfil-foto" src="#" /> -->
       <div class="titulo">
         <h1>Nome de usuario: <?php echo $name_log; ?></h1>
         <h3>Nome completo: <?php echo $full_name_log; ?></h3>
@@ -115,13 +115,16 @@
 
   
     <br>
-<!--    <div>
+<!--    <div> Isso aqui faz o print direto das informaçoes / melhorei ali em cima
         <h4>ID do usuario: <?php echo $id_log; ?></h4>
         <h4>Nome de usuario: <?php echo $name_log; ?></h4>
         <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
         <h4>Nome completo: <?php echo $full_name_log; ?></h4>
         <h4>Senha: <?php echo $password_log; ?></h4>
     </div> -->
+    
+
+<!--botao deletar roda o if dentro desta mesma pagina, botao editar direciona para a pagina de ediçao-->    
     
     <div style="text-align:center">
         <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>

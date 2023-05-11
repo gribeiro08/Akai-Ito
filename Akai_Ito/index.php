@@ -13,6 +13,8 @@
 </head>
 <body>
 <section class="vh-100   gradient-custom">
+
+<!--nav bar-->
     <nav>
  
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -26,6 +28,8 @@
         </ul>
     </nav>
 
+<!---->
+
     <div class="section1">
 
         <label class="img_text">Akai-Ito</label>        
@@ -33,21 +37,24 @@
 
     </div>
 
+<!--imagem do gatinho fofo dando joia-->
     <div class="container">
 
         <div class="row">
 
             <div class="col-md-4">
-
                 <img class="welcome_img" src="img/exemplo2.jpg">
-
             </div>        
 
                 <div class="col-md-8">
 
-                    <h1>Bem vindo ao site Akai Ito</h1>
+<!--texto de boas vindas-->
+                    <div style="text-align:center">
+                        <h1 class="titulo_pagina">Bem vindo ao site Akai Ito</h1>
+                    </div>
 
-                    <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
+<!--descriçao a respeito do site-->
+                    <p class="descricao_pagina">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem 
                         accusantium doloremque laudantium, totam rem aperiam, eaque ipsa 
                         quae ab illo inventore veritatis et quasi architecto beatae vitae 
                         dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit 

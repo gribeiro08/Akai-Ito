@@ -266,6 +266,15 @@ ul li a
     color: #ffffff;
   }
 
+/*titulo das paginas*/
+
   .titulo_pagina{
     color: #ffffff;
   }
+
+/*texto descritivo a respeito do site*/
+
+.descricao_pagina
+{
+  color: #ffffff;
+}
