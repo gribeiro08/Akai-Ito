@@ -111,8 +111,8 @@ include("conexao.php");
     </nav>   
     
     <div style="text-align:center" class="form_title"> 
-    
-       <h1> Resgister Form </h1> 
+    <br><br><br><br><br>
+       <h1> Resgistrar </h1> 
 
     </div> 
     
@@ -140,17 +140,17 @@ include("conexao.php");
             <br><br> 
 
             <label>Senha : </label>  
-            <br>     
-            <label>Formato de senha exigido : </label>   
-            <ol> 
+            <br>  
+            <label>Formato de senha exigido : </label>
+            <ol>        
+            
                 <li>8 caracteres no mínimo</li>
                 <li>1 Letra Maiúscula no mínimo</li>
+                <li>1 Letra Minuscula no mínimo</li>
                 <li>1 Número no mínimo</li>
-                <li>1 Símbolo no mínimo: $*&@#</li>
-                <li>nao permite sequencia de caracteres repetidos</li>
-            </ol>
-            <input type="password" placeholder="Insira a senha" name="password" id="password"   required >
-            <!-- pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/" n funciona aaaaaaaaaaaa-->
+            </ol> 
+            <input type="password" placeholder="Insira a senha" name="password" id="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})"  required >
+            
             <label>Confirme sua senha : </label>   
             <input type="password" placeholder="Insira a senha novamente" name="password_confirmation" id="confirm_password" required>
 

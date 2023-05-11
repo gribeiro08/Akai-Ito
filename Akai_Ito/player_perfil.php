@@ -32,10 +32,13 @@
     <?php
     session_start();
     include("conexao.php");
-    
+ 
+//Funcao que verifica login
+
     $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
     $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
 
+//Funcao que recupera dados da tabela
     
     $dados = mysqli_query($data,"select * from user WHERE username = '$l'");
     while ($d = mysqli_fetch_array($dados)){
@@ -46,8 +49,7 @@
         $password_log = $d['password'];
     }
 
-    //O deletar e Update não estao funcionais ;-;
-    //delete ta me matando aaaaaaaa
+//Funcao para deletar conta a partir do id
 
     if(isset($_GET['id']))
     { ?>
@@ -61,10 +63,28 @@
 
         if(isset($_POST['deletar']))
         {
-            $query = "DELETE FROM user WHERE id=". (int) $_POST['id'];
-        }
+            $sql = "DELETE FROM user WHERE id= '$id_log'";
+            
+            if($data->query($sql)=== TRUE){
+            ?>
 
-    ?>
+            <script language="JavaScript">
+                alert('Cliente removido com sucesso!');
+                location.href = 'index.php';
+            </script>
+
+       <?php }else{
+           ?>
+
+            <script language="JavaScript">
+                alert('Algo deu errado');
+                history.go(-1);
+            </script>    
+        <?php } 
+        } ?>
+
+
+        
     
     <br>
     <div>
@@ -75,7 +95,7 @@
         <h4>Senha: <?php echo $password_log; ?></h4>
     </div>
 
-    <a href="" class="btn btn-danger">Editar conta</a></li>
+    <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="btn btn-danger">Editar conta</a></li>
     <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="btn btn-danger">Deletar conta</a></li>
     
        
