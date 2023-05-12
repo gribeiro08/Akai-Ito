@@ -11,9 +11,9 @@ include("conexao.php");
         $user_full_name=$_POST['name'];
         $user_data_nasc=$_POST['data_nasc'];
         $user_password=$_POST['password'];
-        $user_type="player";
+        $user_type=$_POST['usertype_select'];
 
-        $check="SELECT * FROM jogador WHERE username='$username'";
+        $check="SELECT * FROM user WHERE username='$username'";
         $check_user=mysqli_query($data,$check);
         $row_count=mysqli_num_rows($check_user);
 
@@ -25,7 +25,7 @@ include("conexao.php");
             }
             else 
             {
-                $sql="INSERT INTO jogador(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
+                $sql="INSERT INTO user(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
                 $result=mysqli_query($data,$sql);
 
                 if($result)
@@ -44,11 +44,19 @@ include("conexao.php");
                     {
                         $name = $_POST['username'];
                         $pass = $_POST['password'];
-                        $sql="select * from jogador where username='".$name."' AND password='".$pass."' ";
+                        $sql="select * from user where username='".$name."' AND password='".$pass."' ";
                         $result=mysqli_query($data,$sql);
                         $row=mysqli_fetch_array($result);
 
-                        if($row["usertype"]=="player")
+                        if($row["usertype"]=="anunciante")
+                        {
+
+                            $_SESSION['username']=$name;
+                            $_SESSION['usertype']="anunciante";
+                            header("location:anunciantehome.php");
+                        }
+
+                        elseif($row["usertype"]=="player")
                         {
                             
                             $_SESSION['username']=$name;
@@ -61,16 +69,13 @@ include("conexao.php");
 
                             $message= "username or password do not match";       
                             $_SESSION['loginMessage']=$message;
-                            header("location:login_player.php");
+                            header("location:login.php");
                         }
                     }
                 }
             else
             {
-              echo "<script type='text/javascript'>
-              alert('Algo deu errado.');
-              </script>";
-              header("location:register_player.php");
+                echo "Upload Failed";
             }
 
     }
@@ -99,26 +104,25 @@ include("conexao.php");
 
 <section class="min-vh-100 gradient-custom">
 
-<!--navbar-->
   <nav>
-    
+  
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
+
     <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="jogador.php">Jogador</a></li>
-        <li><a href="anunciante.php">Anunciante</a></li>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="">Contato</a></li>
     </ul>
   </nav>
 
-<!--form de registro-->
+
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="register_player.php" method="POST">
+            <form action="register.php" method="POST">
               <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
               <p class="text-white-50 mb-5">Por favor insira seus dados!</p>
             
@@ -140,7 +144,7 @@ include("conexao.php");
                 <label class="form-label" for="data_nasc">Data de nascimento</label>
               </div>
 
-              <!--Tipo de usuario  
+              <!--Tipo de usuario-->  
               <div class="form-outline form-white mb-4">
                 <select id="usertype" name="usertype_select" class="form-control form-control-lg" required>
                 <option value="" disabled selected>Selecione um tipo</option>
@@ -148,7 +152,7 @@ include("conexao.php");
                 <option value="anunciante">Anunciante</option>
                 </select>
                 <label class="form-label" for="usertype">Selecione o tipo de conta</label>
-              </div>-->
+              </div>
 
               <!--Senha-->  
               <div class="form-outline form-white mb-4">

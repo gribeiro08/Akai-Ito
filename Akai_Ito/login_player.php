@@ -17,14 +17,15 @@
 
 <!--navbar-->
 
-  <nav>
-    <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-    <label class="name">Akai Ito</label>
-    <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="">Contato</a></li>
-    </ul>
-  </nav>
+  <nav>      
+      <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
+      <label class="name">Akai Ito</label>
+      <ul>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="jogador.php">Jogador</a></li>
+          <li><a href="anunciante.php">Anunciante</a></li>
+      </ul>
+    </nav>
 
 <!--form de login-->
 

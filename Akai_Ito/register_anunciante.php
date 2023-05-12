@@ -67,7 +67,10 @@ include("conexao.php");
                 }
             else
             {
-                echo "Upload Failed";
+              echo "<script type='text/javascript'>
+              alert('Algo deu errado.');
+              </script>";
+              header("location:register_anunciante.php");
             }
 
     }
@@ -96,18 +99,19 @@ include("conexao.php");
 
 <section class="min-vh-100 gradient-custom">
 
+<!--navbar-->
   <nav>
   
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
-
     <ul>
-        <li><a href="index.php">Inicio</a></li>
-        <li><a href="">Contato</a></li>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="jogador.php">Jogador</a></li>
+        <li><a href="anunciante.php">Anunciante</a></li>
     </ul>
   </nav>
 
-
+<!--form de registro-->
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">

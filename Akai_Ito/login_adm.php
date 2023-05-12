@@ -54,10 +54,6 @@
               <button class="btn btn-outline-light btn-lg px-5" type="submit" name="submit">Login</button>
 
             </div>
-
-            <div>
-              <p class="mb-0">Não possui uma conta? <a href="#!" class="text-white-50 fw-bold">Registre-se</a>
-              </p>
             </div>
             </form>
 

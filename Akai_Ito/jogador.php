@@ -53,7 +53,7 @@
                     </div>
 
 <!--descriçao a respeito do site-->
-                    <p class="descricao_pagina">"Após o jogador realizar login, podera jogar nosso date simulator e interagir com a comudade atraves do nosso forum"</p>
+                    <p class="descricao_pagina">Após o jogador realizar login, podera jogar nosso date simulator e interagir com a comudade atraves do nosso forum</p>
 
                     <div style="text-align:center">
                         <a href="login_player.php" class="custom-btn btn-4">Login</a>
