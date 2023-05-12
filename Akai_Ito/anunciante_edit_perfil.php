@@ -81,7 +81,7 @@
 
 //Funcao que recupera dados da tabela
  
-    $dados = mysqli_query($data,"select * from user WHERE username = '$l'");
+    $dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
     while ($d = mysqli_fetch_array($dados)){
         $id_log = $d['id'];
     }
@@ -95,7 +95,7 @@
 
                 echo $id_log;
 
-                $sql = "UPDATE user SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
+                $sql = "UPDATE anuncinte SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
                 
                 if($data->query($sql)=== TRUE){
                 ?>

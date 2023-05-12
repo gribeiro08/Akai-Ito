@@ -47,7 +47,7 @@ include("conexao.php");
 
 //Funcao que recupera dados da tabela
     
-    $dados = mysqli_query($data,"select * from user WHERE username = '$l'");
+    $dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
     while ($d = mysqli_fetch_array($dados)){
         $id_log = $d['id'];
         $name_log = $d['username'];
@@ -72,7 +72,7 @@ include("conexao.php");
 
         if(isset($_POST['deletar']))
         {
-            $sql = "DELETE FROM user WHERE id= '$id_log'";
+            $sql = "DELETE FROM anunciante WHERE id= '$id_log'";
             
             if($data->query($sql)=== TRUE){
             ?>

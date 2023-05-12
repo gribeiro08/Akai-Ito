@@ -22,9 +22,8 @@
 
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="">Contato</a></li>
-            <li><a href="register.php" class="custom-btn btn-4">Register</a></li>
-            <li><a href="login.php" class="custom-btn btn-4">Login</a></li>
+            <li><a href="jogador.php">Jogador</a></li>
+            <li><a href="anunciante.php">Anunciante</a></li>
         </ul>
     </nav>
 
