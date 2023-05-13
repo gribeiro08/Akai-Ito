@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<section class="vh-100   gradient-custom">
+<section class="h-auto   gradient-custom">
 
 <!--nav bar-->
     <nav>
@@ -24,6 +24,7 @@
             <li><a href="index.php">Home</a></li>
             <li><a href="jogador.php">Jogador</a></li>
             <li><a href="anunciante.php">Anunciante</a></li>
+            <a href="register.php" class="custom-btn btn-4">Register</a>
         </ul>
     </nav>
 
@@ -66,7 +67,30 @@
                         aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
                         qui in ea voluptate velit esse quam nihil molestiae consequatur, vel 
                         illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                        <br><br><br><br>
+            </div>
 
+            
+
+            <div style="text-align:center">
+                <h3 class="titulo_pagina" >Login de jogador</h3>
+                <p class="descricao_pagina">Após o jogador realizar login, podera jogar nosso date simulator e interagir com a comudade atraves do nosso forum</p>
+
+                    <div style="text-align:center">
+                        <a href="login_player.php" class="custom-btn btn-4">Login</a>
+                    </div>
+                    <br><br>
+            </div>
+
+            
+
+            <div style="text-align:center">
+                <h3 class="titulo_pagina">Login de anunciante</h3>
+                <p class="descricao_pagina">Após o anunciante realizar login, podera postar anuncios de produtos relacionados ao nosso date simulator</p>
+                    
+                    <div style="text-align:center">
+                        <a href="login_anunciante.php" class="custom-btn btn-4">Login</a>
+                    </div>
             </div>
 
         </div>  

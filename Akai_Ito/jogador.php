@@ -57,7 +57,6 @@
 
                     <div style="text-align:center">
                         <a href="login_player.php" class="custom-btn btn-4">Login</a>
-                        <a href="register_player.php" class="custom-btn btn-4">Register</a>
                     </div>
             </div>
 

@@ -5,6 +5,7 @@ session_start();
 
 include("conexao.php");
 
+
 if($data===false)
 {
     die("connection error");
@@ -15,41 +16,34 @@ if($data===false)
         $name = $_POST['username'];
         $pass = $_POST['password'];
 
-        $sql="select * from user where username='".$name."' AND password='".$pass."' ";
-        $result=mysqli_query($data,$sql);
-        $row=mysqli_fetch_array($result);
+        $sql="select * from jogador where username='".$name."' AND password='".$pass."' ";
 
-        if($row["usertype"]=="anunciante")
+            $result=mysqli_query($data,$sql);
+            $row=mysqli_fetch_array($result);
+
+    
+        if($result)
         {
+            if($row["usertype"]=="player")
+            {
 
             $_SESSION['username']=$name;
-            $_SESSION['usertype']="anunciante";
-            header("location:anunciantehome.php");
-        }
 
-        elseif($row["usertype"]=="player")
-        {
-            
-            $_SESSION['username']=$name;
             $_SESSION['usertype']="player";
+
             header("location:playerhome.php");
-        }
+            }
 
-        elseif($row["usertype"]=="admin")
-        {
+            else
+            {
+
+                $message= "username or password do not match";
             
-            $_SESSION['username']=$name;
-            $_SESSION['usertype']="admin";
-            header("location:adminhome.php");
-        }
+                $_SESSION['loginMessage']=$message;
 
-        else
-        {
-
-            $message= "username or password do not match";        
-            $_SESSION['loginMessage']=$message;
-            header("location:login.php");
+                header("location:login.php");
+            }
         }
-    }
+    }    
 
 ?>
