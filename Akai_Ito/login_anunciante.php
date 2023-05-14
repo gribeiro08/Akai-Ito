@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Login</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -15,15 +15,16 @@
 <body>
 <section class="min-vh-100 gradient-custom">
 
-<!--navbar-->
-
-<nav>    
+<!--nav bar-->
+  <nav>
+  
     <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
     <label class="name">Akai Ito</label>
+
     <ul>
         <li><a href="index.php">Home</a></li>
-        <li><a href="jogador.php">Jogador</a></li>
-        <li><a href="anunciante.php">Anunciante</a></li>
+        <li><a href="contato.php">Contato</a></li>
+        <a href="register.php" class="custom-btn btn-4">Register</a>
     </ul>
   </nav>
 

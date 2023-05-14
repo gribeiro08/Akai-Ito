@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Anunciante</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -95,14 +95,14 @@
 
                 echo $id_log;
 
-                $sql = "UPDATE anuncinte SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
+                $sql = "UPDATE anunciante SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
                 
                 if($data->query($sql)=== TRUE){
                 ?>
 
                 <script language="JavaScript">
                     alert('Conta editada com sucesso!');
-                    location.href = 'login.php';
+                    location.href = 'login_anunciante.php';
                 </script>
 
         <?php }else{

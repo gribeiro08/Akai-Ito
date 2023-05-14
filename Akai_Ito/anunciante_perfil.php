@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Player</title>
+    <title>Anunciante</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -129,8 +129,8 @@ include("conexao.php");
 
 <!--botao deletar roda o if dentro desta mesma pagina, botao editar direciona para a pagina de ediçao-->    
     <div style="text-align:center">
-        <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
-        <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
+        <a href="anunciante_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
+        <a href="anunciante_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
     </div>
     
        

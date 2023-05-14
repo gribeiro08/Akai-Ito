@@ -59,11 +59,8 @@ if(isset($_POST['register']))
                     }
 
                     else
-                    {
-
-                        $message= "username or password do not match";       
-                        $_SESSION['loginMessage']=$message;
-                        header("location:login.php");
+                    {      
+                        header("location:login_anunciante.php");
                     }
                 }
             }
@@ -77,9 +74,10 @@ if(isset($_POST['register']))
 
         }
     }
-//caso o tipo de ussuario seja = 'player'    
+
+/*caso o tipo de ussuario seja = 'player'  */      
     elseif($user_type=='player')
-    {
+    {    
         $check="SELECT * FROM jogador WHERE username='$username'";
         $check_user=mysqli_query($data,$check);
         $row_count=mysqli_num_rows($check_user);
@@ -115,19 +113,17 @@ if(isset($_POST['register']))
                     $result=mysqli_query($data,$sql);
                     $row=mysqli_fetch_array($result);
 
-                    if($row["usertype"]=="jogador")
+                    if($row["usertype"]=="player")
                     {
                         
                         $_SESSION['username']=$name;
                         $_SESSION['usertype']="player";
-                        header("location:playertehome.php");
+                        header("location:playerhome.php");
                     }
 
                     else
-                    {
-                        $message= "username or password do not match";       
-                        $_SESSION['loginMessage']=$message;
-                        header("location:login.php");
+                    {      
+                        header("location:login_player.php");
                     }
                 }
             }
@@ -151,7 +147,7 @@ if(isset($_POST['register']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Form</title>
+    <title>Cadastro</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -165,17 +161,18 @@ if(isset($_POST['register']))
 
 <section class="min-vh-100 gradient-custom">
 
-<!--navbar-->
-  <nav>
-  
-    <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
-    <label class="name">Akai Ito</label>
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="jogador.php">Jogador</a></li>
-        <li><a href="anunciante.php">Anunciante</a></li>
-    </ul>
-  </nav>
+<!--nav bar-->
+    <nav>
+    
+        <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
+        <label class="name">Akai Ito</label>
+
+        <ul>
+            <li><a href="index.php">Home</a></li>
+            <li><a href="contato.php">Contato</a></li>
+            <a href="register.php" class="custom-btn btn-4">Register</a>
+        </ul>
+    </nav>
 
 <!--form de registro-->
     <div class="row d-flex justify-content-center align-items-center h-100">
