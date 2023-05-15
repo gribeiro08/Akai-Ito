@@ -55,7 +55,10 @@
                     relacionados ao jogo.
                     </p>
                     <p class="descricao_pagina">Os usuários do tipo anunciante podem postar anuncios relacionados ao nosso jogo.</p>
-                    <br><br><br><br>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            </div>
+            <div style="text-align:center">
+                <a href="login_adm.php" class="custom-btn btn-4">Login ADM</a>
             </div>
      
 </section>  

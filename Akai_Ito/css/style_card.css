@@ -44,14 +44,15 @@
     width: 50%;
   }
 
-/*Tem q adicionar 1 em uma dessas colunas no caso de mais um card*/
+
 
   @media(min-width: 540px){
     .card-grid{
       grid-template-columns: repeat(2, 1fr); 
     }
   }
-  
+
+  /*Tem q adicionar 1 em uma dessas colunas no caso de mais um card; no caso grid-template-columns: repeat(3, 1fr)*/
   @media(min-width: 960px){
     .card-grid{
       grid-template-columns: repeat(2, 1fr); 
