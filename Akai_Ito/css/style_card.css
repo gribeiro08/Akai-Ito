@@ -43,7 +43,9 @@
     max-width: var(--width-container);
     width: 50%;
   }
-  
+
+/*Tem q adicionar 1 em uma dessas colunas no caso de mais um card*/
+
   @media(min-width: 540px){
     .card-grid{
       grid-template-columns: repeat(2, 1fr); 

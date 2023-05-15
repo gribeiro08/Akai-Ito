@@ -51,7 +51,7 @@
                 <label class="form-label" for="typePasswordX">Senha</label>
               </div>
 
-              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Esqueceu sua senha?</a></p>
+<!--               <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Esqueceu sua senha?</a></p> -->
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit" name="submit">Login</button>
 
