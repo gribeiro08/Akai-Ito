@@ -36,7 +36,7 @@ if($data===false)
         else
         {
 
-            $message= "username or password do not match";
+            $message= "Nome de usuário ou senha inválidos";
         
             $_SESSION['loginMessage']=$message;
 
