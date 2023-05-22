@@ -49,9 +49,24 @@ session_start();
   </nav>
 
 <?php
-/*conexao com o banco de dados e inicio da sessao*/
- session_start();
- include("conexao.php");
+/*conexao com o banco de dados e incicio de sessao */
+session_start();
+include("conexao.php");
+
+//Funcao que verifica login
+
+$l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
+$s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
+
+//Funcao que recupera dados da tabela
+
+$dados = mysqli_query($data,"select * from jogador WHERE username = '$l'");
+while ($d = mysqli_fetch_array($dados)){
+    $id_log = $d['id'];
+    $username_log = $d['username'];
+    $full_name_log = $d['full_name'];
+    $data_nasc_log = $d['data_nasc'];
+}
 
  if(isset($_GET['id']))
         { ?>
@@ -68,19 +83,19 @@ session_start();
             
               <!--Nome de usuario-->    
               <div class="form-outline form-white mb-4">
-                <input type="text" id="new_username" name="new_username" class="form-control form-control-lg" required/>
+                <input type="text" id="new_username" name="new_username" class="form-control form-control-lg" placeholder="<?php echo $username_log; ?>"/>
                 <label class="form-label" for="new_username">Nome de usuário</label>
               </div>
 
               <!--Nome completo-->  
               <div class="form-outline form-white mb-4">
-                <input type="text" id="new_name" name="new_name" class="form-control form-control-lg" required/>
+                <input type="text" id="new_name" name="new_name" class="form-control form-control-lg" placeholder="<?php echo $full_name_log; ?>"/>
                 <label class="form-label" for="new_name">Nome completo</label>
               </div>
 
               <!--Data de nascimento-->  
               <div class="form-outline form-white mb-4">
-                <input type="date" min="1850-01-01" max="2012-12-30" id="new_data_nasc" name="new_data_nasc" class="form-control form-control-lg" required/>
+                <input type="date" min="1850-01-01" max="2012-12-30" id="new_data_nasc" name="new_data_nasc" class="form-control form-control-lg"/>
                 <label class="form-label" for="new_data_nasc">Data de nascimento</label>
               </div>
 
@@ -93,17 +108,6 @@ session_start();
             </form>
 
 <?php } 
-//Funcao que verifica login
-
-    $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
-    $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
-
-//Funcao que recupera dados da tabela
- 
-    $dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
-    while ($d = mysqli_fetch_array($dados)){
-        $id_log = $d['id'];
-    }
 
             if(isset($_POST['editar']))
             {
@@ -113,6 +117,18 @@ session_start();
                 $new_user_data_nasc=$_POST['new_data_nasc'];
 
                 echo $id_log;
+
+                if($new_username == ''){
+                  $new_username = $username_log;
+                }
+
+                if($new_user_full_name  == ''){
+                  $new_user_full_name = $full_name_log;
+                }
+
+                if($new_user_data_nasc  == NULL){
+                  $new_user_data_nasc = $data_nasc_log;
+                }
 
                 $sql = "UPDATE anunciante SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
                 
