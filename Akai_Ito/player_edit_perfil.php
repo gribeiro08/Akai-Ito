@@ -1,5 +1,7 @@
 <?php
+/*conexao com o banco de dados e incicio de sessao */
 session_start();
+include("conexao.php");
 
     if(!isset($_SESSION['username']))
     {
@@ -49,9 +51,6 @@ session_start();
   </nav>
 
 <?php
-/*conexao com o banco de dados e incicio de sessao */
-session_start();
-include("conexao.php");
 
 //Funcao que verifica login
 

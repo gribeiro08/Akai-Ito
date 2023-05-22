@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conexao.php");
 
     if(!isset($_SESSION['username']))
     {
@@ -58,8 +59,6 @@ session_start();
     
 
     <?php
-    session_start();
-    include("conexao.php");
  
 //Funcao que verifica login
 

@@ -1,5 +1,7 @@
 <?php
+/*conexao com o banco de dados e incicio de sessao */
 session_start();
+include("conexao.php");
 
     if(!isset($_SESSION['username']))
     {
@@ -49,9 +51,6 @@ session_start();
   </nav>
 
 <?php
-/*conexao com o banco de dados e incicio de sessao */
-session_start();
-include("conexao.php");
 
 //Funcao que verifica login
 
@@ -60,7 +59,7 @@ $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
 
 //Funcao que recupera dados da tabela
 
-$dados = mysqli_query($data,"select * from jogador WHERE username = '$l'");
+$dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
 while ($d = mysqli_fetch_array($dados)){
     $id_log = $d['id'];
     $username_log = $d['username'];
