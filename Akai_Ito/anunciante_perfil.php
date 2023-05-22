@@ -1,3 +1,22 @@
+<?php
+session_start();
+
+    if(!isset($_SESSION['username']))
+    {
+        header("location:login_anunciante.php");
+    }
+
+    elseif($_SESSION['usertype']=='admin')
+    {
+        header("location:login_adm.php");
+    }
+
+    elseif($_SESSION['usertype']=='player')
+    {
+        header("location:login_anunciante.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
