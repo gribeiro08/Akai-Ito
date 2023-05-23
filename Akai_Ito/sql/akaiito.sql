@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3307
--- Tempo de geração: 23-Maio-2023 às 16:01
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Tempo de geração: 24-Maio-2023 às 00:36
+-- Versão do servidor: 10.4.25-MariaDB
+-- versão do PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,31 @@ CREATE TABLE `anuncios` (
 --
 
 INSERT INTO `anuncios` (`id`, `legenda`, `URL`, `img_an`, `id_user`) VALUES
-(1, 'Gatinho fofo', 'https://pt.wikipedia.org/wiki/Gato', 0x4172726179, 1);
+(9, 'Gatinho fofo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 0x4172726179, 1),
+(10, 'Gatinho bruxo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 0x4172726179, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `forum`
+--
+
+CREATE TABLE `forum` (
+  `id` int(11) NOT NULL,
+  `comentario` varchar(300) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `user_name` varchar(50) NOT NULL,
+  `story_chapter` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `forum`
+--
+
+INSERT INTO `forum` (`id`, `comentario`, `id_user`, `user_name`, `story_chapter`) VALUES
+(1, 'Adorei esse capítulo!!!', 2, 'jogadorzinho', 1),
+(2, 'Esse foi melhor que o primeiro :p', 2, 'jogadorzinho', 2),
+(3, 'A historia esta ficando incrivel', 3, 'vinizinho', 3);
 
 -- --------------------------------------------------------
 
@@ -86,7 +110,8 @@ CREATE TABLE `jogador` (
 --
 
 INSERT INTO `jogador` (`id`, `username`, `data_nasc`, `full_name`, `password`, `story_progress`, `usertype`) VALUES
-(2, 'jogadorzinho', '2012-12-07', 'Juca Junior', 'Juca1234', NULL, 'player');
+(2, 'jogadorzinho', '2012-12-07', 'Juca Junior', 'Juca1234', NULL, 'player'),
+(3, 'vinizinho', '2012-12-11', 'Vini Ian', 'Vini1234', NULL, 'player');
 
 -- --------------------------------------------------------
 
@@ -139,6 +164,13 @@ ALTER TABLE `anuncios`
   ADD KEY `anuncio_ibfk_5` (`id_user`);
 
 --
+-- Índices para tabela `forum`
+--
+ALTER TABLE `forum`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_user` (`id_user`);
+
+--
 -- Índices para tabela `jogador`
 --
 ALTER TABLE `jogador`
@@ -172,13 +204,19 @@ ALTER TABLE `anunciante`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de tabela `forum`
+--
+ALTER TABLE `forum`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `jogador`
 --
 ALTER TABLE `jogador`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `user_adm`
@@ -201,6 +239,12 @@ ALTER TABLE `anunciante`
 --
 ALTER TABLE `anuncios`
   ADD CONSTRAINT `anuncio_ibfk_5` FOREIGN KEY (`id_user`) REFERENCES `anunciante` (`id`);
+
+--
+-- Limitadores para a tabela `forum`
+--
+ALTER TABLE `forum`
+  ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `jogador` (`id`);
 
 --
 -- Limitadores para a tabela `jogador`
