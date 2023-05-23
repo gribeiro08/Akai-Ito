@@ -29,13 +29,16 @@ elseif($_SESSION['usertype']=='player')
         $id_user_log = $d['id'];
     }
 
-//coleta dados do form
-
 if(isset($_POST['register']))
     {
+
+//coleta dados do form
+
         $an_legenda=$_POST['description'];
         $an_url=$_POST['url'];
         $an_img=$_FILES['image'];
+
+//insere anuncio na tabela
 
             $sql="INSERT INTO anuncios(legenda,URL,img_an,id_user) VALUES ('$an_legenda','$an_url','$an_img','$id_user_log')";             
             $result=mysqli_query($data,$sql);
@@ -48,8 +51,6 @@ if(isset($_POST['register']))
                 
                 header("location:anunciante_anuncios.php");
             }
-
-           
 
 }
 ?>
@@ -92,18 +93,40 @@ if(isset($_POST['register']))
         <br><br>
     </div>
 
-    <form action="register_anuncio.php" method="POST" enctype="multipart/form-data">
-		<label for="image">Imagem:</label>
-		<input type="file" name="image"/>
-		<br/>
-        <label for="description">Descricao:</label>
-		<input type="text" name="description"/>
-		<br/>
-        <label for="url">URL:</label>
-		<input type="url" name="url"/>
-		<br/>
-		<button class="btn btn-outline-light btn-lg px-5" type="submit" name="register">Registrar</button>
-	</form>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem;">
+          <div class="card-body p-5 text-center">
+
+            <div class="mb-md-5 mt-md-4 pb-5">
+            <form action="player_edit_perfil.php" method="POST">
+              <h2 class="fw-bold mb-2 text-uppercase">Cadastrar anuncio</h2>
+              <p class="text-white-50 mb-5">Por favor os dados!</p>
+            
+              <!--Descricao-->    
+              <div class="form-outline form-white mb-4">
+                <input type="text" name="description" id="description" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_username">Descricao: </label>
+              </div>
+
+              <!--URL-->    
+              <div class="form-outline form-white mb-4">
+                <input type="url" name="url" id="url" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_username">URL: </label>
+              </div>
+
+              <!--Imagem-->    
+              <div class="form-outline form-white mb-4">
+                <input type="file" name="image" id="image" class="form-control form-control-lg" required/>
+                <label class="form-label" for="new_username">Imagem: </label>
+              </div>
+
+              <div class="form-outline form-white mb-4">
+                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="register" value="Registrar anuncio">
+              </div>
+
+            </div>
+            </form>
 
     </section>
 </body>
