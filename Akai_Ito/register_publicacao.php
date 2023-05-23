@@ -2,20 +2,20 @@
 session_start();
 include("conexao.php");
 
-if(!isset($_SESSION['username']))
-{
-    header("location:login_anunciante.php");
-}
+    if(!isset($_SESSION['username']))
+    {
+        header("location:login_player.php");
+    }
 
-elseif($_SESSION['usertype']=='admin')
-{
-    header("location:login_adm.php");
-}
-
-elseif($_SESSION['usertype']=='player')
-{
-    header("location:login_anunciante.php");
-}
+    elseif($_SESSION['usertype']=='admin')
+    {
+        header("location:login_adm.php");
+    }
+    
+    elseif($_SESSION['usertype']=='anunciante')
+    {
+        header("location:login_player.php");
+    }
 
 //Funcao que verifica login
 
@@ -24,9 +24,10 @@ elseif($_SESSION['usertype']=='player')
 
 //Funcao que recupera dados da tabela
     
-    $dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
+    $dados = mysqli_query($data,"select * from jogador WHERE username = '$l'");
     while ($d = mysqli_fetch_array($dados)){
         $id_user_log = $d['id'];
+        $username_user_log = $d['username'];
     }
 
 if(isset($_POST['register']))
@@ -34,13 +35,12 @@ if(isset($_POST['register']))
 
 //coleta dados do form
 
-      $an_legenda=$_POST['description'];
-      $an_url=$_POST['url'];
-      $an_img=$_FILES['image_an'];
+      $publi_comment=$_POST['comment'];
+      $publi_chapter=$_POST['chapter'];
 
 //insere anuncio na tabela
 
-        $sql="INSERT INTO anuncios(legenda,URL,img_an,id_user) VALUES ('$an_legenda','$an_url','$an_img','$id_user_log')";             
+        $sql="INSERT INTO forum(comentario,id_user,user_name,story_chapter) VALUES ('$publi_comment','$id_user_log','$username_user_log','$publi_chapter')";             
         $result=mysqli_query($data,$sql);
 
         if($result)
@@ -49,7 +49,7 @@ if(isset($_POST['register']))
             alert('Data Uploaded Succcessfully');
             </script>";
             
-            header("location:anunciante_anuncios.php");
+            header("location:playerhome.php");
         }
 
 }
@@ -61,7 +61,7 @@ if(isset($_POST['register']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anunciante</title>
+    <title>Jogador</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -73,25 +73,18 @@ if(isset($_POST['register']))
 <section class="min-vh-100 gradient-custom">    
 <!--navbar-->
     <nav>
-
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
         <label class="name">Akai Ito</label>
-
         <ul>
-            <li><a href="anunciantehome.php">Inicio</a></li>
-            <li><a href="anunciante_anuncios.php">Anuncios</a></li>
-            <li><a href="anunciante_perfil.php">Perfil</a></li>
+            <li><a href="playerhome.php">Inicio</a></li>
+            <li><a href="player_game.php">Jogo</a></li>
+            <li><a href="player_perfil.php">Perfil</a></li>
+            <li><a href="player_anuncios.php">Anuncios</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>
 
     <p><br><br><br><br></p>
-
-<!--titulo-->
-    <div style="text-align:center">
-        <h1 class="titulo_pagina">Anuncios</h1>
-        <br><br>
-    </div>
 
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -99,26 +92,20 @@ if(isset($_POST['register']))
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="register_anuncio.php" method="POST" enctype="multipart/form-data">
-              <h2 class="fw-bold mb-2 text-uppercase">Cadastrar anuncio</h2>
-              <p class="text-white-50 mb-5">Por favor os dados!</p>
+            <form action="register_publicacao.php" method="POST" enctype="multipart/form-data">
+              <h2 class="fw-bold mb-2 text-uppercase">Cadastrar publicação</h2>
+              <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             
               <!--Descricao-->    
               <div class="form-outline form-white mb-4">
-                <input type="text" name="description" id="description" class="form-control form-control-lg" required/>
-                <label class="form-label" for="description">Descricao: </label>
+                <label class="form-label" for="comment">Comentário: </label>
+                <input type="text" name="comment" id="comment" class="form-control form-control-lg" required/>
               </div>
 
-              <!--URL-->    
-              <div class="form-outline form-white mb-4">
-                <input type="url" name="url" id="url" class="form-control form-control-lg" required/>
-                <label class="form-label" for="url">URL: </label>
-              </div>
-
-              <!--Imagem-->    
-              <div class="form-outline form-white mb-4">
-                <input type="file" name="image_an" id="image_an" class="form-control form-control-lg" required/>
-                <label class="form-label" for="image_an">Imagem: </label>
+            <!--Descricao-->    
+            <div class="form-outline form-white mb-4">
+                <label class="form-label" for="chapter">A respeito de qual capitulo é sua publicação? </label>
+                <input type="text" name="chapter" id="chapter" class="form-control form-control-lg" pattern="^[0-9]+$" required/>
               </div>
 
               <div class="form-outline form-white mb-4">

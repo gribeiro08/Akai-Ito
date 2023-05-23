@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conexao.php");
 
     if(!isset($_SESSION['username']))
     {
@@ -15,6 +16,19 @@ session_start();
     {
         header("location:login_anunciante.php");
     }
+
+//Funcao que verifica login
+
+    $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
+    $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
+
+//Funcao que recupera dados da tabela anunciante
+    
+    $dados = mysqli_query($data,"select * from anunciante WHERE username = '$l'");
+    while ($d = mysqli_fetch_array($dados)){
+        $id_user_log = $d['id'];
+    }
+
 ?>
 
 
@@ -56,10 +70,41 @@ session_start();
         <br><br>
     </div>
 
-    <a href="register_anuncio.php" class="custom-btn btn-4">Cadastrar novo anuncio</a>
+<!--btn para cadastrar novo anuncio-->
+    <div style="text-align:center">
+        <a href="register_anuncio.php" class="custom-btn btn-4">Cadastrar novo anuncio</a>
+    </div>
 
-</div>
-</div>
+<!--tentativa de fazer grid dos cadastros do usuario--> 
+
+
+<?php
+//Funcao que recupera dados da tabela anunciante
+
+    $dados_an = mysqli_query($data,"select * from anuncios WHERE id_user = '$id_user_log'");
+    while ($d_an = mysqli_fetch_assoc($dados_an)){
+        $id_an = $d_an['id'];
+        $legenda_an = $d_an['legenda'];
+        $url_an = $d_an['URL'];
+        $img_an = $d_an['img_an'];
+
+?>
+
+<!--Tem que rever pq n a imagem n aparece, pode ser pq no banco esta como BLOB, num sei-->
+
+    <div class="container_an">
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['img_an']?>" alt="<?php echo $d_an['legenda']?>"></a>
+            </div>
+
+        </div>
+    </div>
+    
+<?php    
+}
+?>
 
 </section>
 </body>
