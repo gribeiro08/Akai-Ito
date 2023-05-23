@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 13-Maio-2023 às 01:12
--- Versão do servidor: 10.4.25-MariaDB
--- versão do PHP: 8.1.10
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 23-Maio-2023 às 16:01
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,6 +36,34 @@ CREATE TABLE `anunciante` (
   `anuncio` varchar(50) NOT NULL,
   `usertype` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `anunciante`
+--
+
+INSERT INTO `anunciante` (`id`, `username`, `data_nasc`, `full_name`, `password`, `anuncio`, `usertype`) VALUES
+(1, 'Claudete', '2012-12-06', 'Claudete Ramos', 'Clau1234', '', 'anunciante');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `anuncios`
+--
+
+CREATE TABLE `anuncios` (
+  `id` int(11) NOT NULL,
+  `legenda` varchar(150) NOT NULL,
+  `URL` varchar(300) NOT NULL,
+  `img_an` mediumblob NOT NULL,
+  `id_user` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `anuncios`
+--
+
+INSERT INTO `anuncios` (`id`, `legenda`, `URL`, `img_an`, `id_user`) VALUES
+(1, 'Gatinho fofo', 'https://pt.wikipedia.org/wiki/Gato', 0x4172726179, 1);
 
 -- --------------------------------------------------------
 
@@ -104,6 +132,13 @@ ALTER TABLE `anunciante`
   ADD KEY `usertype` (`usertype`);
 
 --
+-- Índices para tabela `anuncios`
+--
+ALTER TABLE `anuncios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `anuncio_ibfk_5` (`id_user`);
+
+--
 -- Índices para tabela `jogador`
 --
 ALTER TABLE `jogador`
@@ -131,7 +166,13 @@ ALTER TABLE `user_adm`
 -- AUTO_INCREMENT de tabela `anunciante`
 --
 ALTER TABLE `anunciante`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de tabela `anuncios`
+--
+ALTER TABLE `anuncios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de tabela `jogador`
@@ -154,6 +195,12 @@ ALTER TABLE `user_adm`
 --
 ALTER TABLE `anunciante`
   ADD CONSTRAINT `anunciante_ibfk_1` FOREIGN KEY (`usertype`) REFERENCES `tipo_de_usuario` (`id`);
+
+--
+-- Limitadores para a tabela `anuncios`
+--
+ALTER TABLE `anuncios`
+  ADD CONSTRAINT `anuncio_ibfk_5` FOREIGN KEY (`id_user`) REFERENCES `anunciante` (`id`);
 
 --
 -- Limitadores para a tabela `jogador`

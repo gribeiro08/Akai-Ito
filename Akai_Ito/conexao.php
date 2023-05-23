@@ -1,10 +1,12 @@
 <?php
-/* Computadores da faculdade
+/* Computadores da faculdade*/
 
 $host="localhost:3307";
-*/
+/* */
 
-$host="localhost";
+/*Computador pessoal */
+
+/* $host="localhost";*/
 
 $user="eu";
 
