@@ -3,7 +3,7 @@
     margin: 20px auto 0 auto;
     border: 1px solid #ccc;
     border-radius: 2px;
-    width: 800px    ;
+    width: 800px;
     background: white;
     font-size: 12px;
     display: inline-block;
@@ -42,3 +42,6 @@
     align-items: center;
   }
   
+  .time{
+  justify-content: right;
+}

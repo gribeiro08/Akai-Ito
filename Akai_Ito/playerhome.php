@@ -47,6 +47,7 @@ include("conexao.php");
             <li><a href="player_game.php">Jogo</a></li>
             <li><a href="player_perfil.php">Perfil</a></li>
             <li><a href="player_anuncios.php">Anuncios</a></li>
+            <li><a href="player_postagens.php">Minhas postagens</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>
@@ -66,7 +67,7 @@ include("conexao.php");
 
 
     <?php
-//Funcao que recupera dados da tabela anunciante
+//Funcao que recupera dados da tabela forum
 
     $dados_publi = mysqli_query($data,"select * from forum");
     while ($d_pb = mysqli_fetch_assoc($dados_publi)){
@@ -87,7 +88,7 @@ include("conexao.php");
 
         <div class="card">
             <div class="card-header">
-                <img class="user-image" src="https://scontent-mia1-2.cdninstagram.com/t51.2885-19/s150x150/16123842_1714482082215051_562655198405722112_n.jpg">
+                <img class="user-image" src="https://i.pinimg.com/originals/4b/3e/02/4b3e0279e016cc145240de10c8a06fb6.png">
                 <p class="user-name"><?php echo $d_pb['user_name']?></p>
             </div>
 
@@ -97,7 +98,7 @@ include("conexao.php");
             </div>
 
             <div class="card-actions">
-                <p><?php echo $d_pb['story_chapter']?></p>
+                <p>Capítulo: <?php echo $d_pb['story_chapter']?></p>
             </div>
         </div>  
 

@@ -81,6 +81,7 @@ if(isset($_POST['register']))
             <li><a href="anunciantehome.php">Inicio</a></li>
             <li><a href="anunciante_anuncios.php">Anuncios</a></li>
             <li><a href="anunciante_perfil.php">Perfil</a></li>
+            <li><a href="player_postagens.php">Minhas postagens</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>
@@ -117,7 +118,7 @@ if(isset($_POST['register']))
 
               <!--Imagem-->    
               <div class="form-outline form-white mb-4">
-                <input type="file" name="image_an" id="image_an" class="form-control form-control-lg" required/>
+                <input type="file" accept='.png,.gif,.jpg' name="image_an" id="image_an" class="form-control form-control-lg" required/>
                 <label class="form-label" for="image_an">Imagem: </label>
               </div>
 

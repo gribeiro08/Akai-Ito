@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("conexao.php");
 
     if(!isset($_SESSION['username']))
     {
@@ -26,6 +27,7 @@ session_start();
     <title>Jogador</title>
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style_anuncios.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
@@ -44,6 +46,7 @@ session_start();
             <li><a href="player_game.php">Jogo</a></li>
             <li><a href="player_perfil.php">Perfil</a></li>
             <li><a href="player_anuncios.php">Anuncios</a></li>
+            <li><a href="player_postagens.php">Minhas postagens</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>
@@ -51,43 +54,38 @@ session_start();
 <p><br><br><br><br></p>
 
 <!--titulo-->
-
-    <div style="text-align:center">
-            <h1 class="titulo_pagina">Anuncios</h1>
-            <br><br>
-        </div>
-
-        <div class="container_an">
-
-        <div class="gallery">
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=500&h=500&fit=crop" alt="person writing in a notebook beside by an iPad, laptop, printed photos, spectacles, and a cup of coffee on a saucer">
-            </div>
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1515260268569-9271009adfdb?w=500&h=500&fit=crop" alt="sunset behind San Francisco city skyline">
-            </div>
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1506045412240-22980140a405?w=500&h=500&fit=crop" alt="people holding umbrellas on a busy street at night lit by street lights and illuminated signs in Tokyo, Japan">
-            </div>
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1514041181368-bca62cceffcd?w=500&h=500&fit=crop" alt="car interior from central back seat position showing driver and blurred view through windscreen of a busy road at night">
-            </div>
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1445810694374-0a94739e4a03?w=500&h=500&fit=crop" alt="back view of woman wearing a backpack and beanie waiting to cross the road on a busy street at night in New York City, USA">
-            </div>
-
-            <div class="gallery-item">
-                <img class="gallery-image" src="https://images.unsplash.com/photo-1486334803289-1623f249dd1e?w=500&h=500&fit=crop" alt="man wearing a black jacket, white shirt, blue jeans, and brown boots, playing a white electric guitar while sitting on an amp">
-            </div>
-
-        </div>
-
+<div style="text-align:center">
+        <h1 class="titulo_pagina">Anuncios</h1>
+        <br><br>
     </div>
+    
+<?php
+//Funcao que recupera dados da tabela anunciante
+
+$dados = mysqli_query($data,"select * from anuncios");
+while ($d = mysqli_fetch_assoc($dados)){
+    $id_an = $d['id'];
+    $legenda_an = $d['legenda'];
+    $url_an = $d['URL'];
+    $img_an = $d['img_an'];
+
+?>
+
+<!--Tem que rever pq n a imagem n aparece, pode ser pq no banco esta como BLOB, num sei-->
+
+<div class="container_an">
+    <div class="gallery">
+
+        <div class="gallery-item">
+                    <a href="<?php echo $d['URL']?>"><img class="gallery-image" src="<?php echo $d['img_an']?>" alt="<?php echo $d['legenda']?>"></a>
+            </div>    
+         </div>
+    </div>
+</div>
+
+<?php    
+}
+?>
 
 
 </section>

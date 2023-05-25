@@ -102,7 +102,7 @@ if(isset($_POST['register']))
                 <input type="text" name="comment" id="comment" class="form-control form-control-lg" required/>
               </div>
 
-            <!--Descricao-->    
+            <!--Capitulo-->    
             <div class="form-outline form-white mb-4">
                 <label class="form-label" for="chapter">A respeito de qual capitulo é sua publicação? </label>
                 <input type="text" name="chapter" id="chapter" class="form-control form-control-lg" pattern="^[0-9]+$" required/>
