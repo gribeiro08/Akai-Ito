@@ -76,7 +76,7 @@ if(isset($_GET['id']))
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="player_edit_postagem.php" method="POST">
+            <form action="player_edicao_publicacao.php" method="POST">
               <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
               <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             
@@ -100,44 +100,7 @@ if(isset($_GET['id']))
             </div>
             </form>
 
-<?php } 
-
-//Funcao que edita os dados da tabela
-            if(isset($_POST['editar_pb']))
-            {
-                
-                $new_comment=$_POST['new_comment'];
-                $new_chapter=$_POST['new_chapter'];
-
-                echo $id_edit;
-
-                if($new_comment == ''){
-                  $new_comment = $comment_pb;
-                }
-
-                if($new_comment  == ''){
-                  $new_comment = $story_chapter_pb;
-                }
-
-                $sql = "UPDATE forum SET comentario = '$new_comment', story_chapter = '$new_chapter' WHERE id= '$id_edit'";
-                
-                if($data->query($sql)=== TRUE){
-                ?>
-
-                    <script language="JavaScript">
-                        alert('Publicação editada com sucesso!');
-                        location.href = 'player_postagens.php';
-                    </script>
-
-        <?php   }else{
-            ?>
-
-                    <script language="JavaScript">
-                        alert('Algo deu errado');
-                        history.go(-1);
-                    </script>    
-        <?php   } 
-            } ?>
+<?php } ?>
 
             </div>
         </div>

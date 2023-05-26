@@ -75,7 +75,7 @@ while ($d = mysqli_fetch_array($dados))
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="anunciante_edit_anuncio.php" method="POST">
+            <form action="anunciante_edicao_anuncio.php" method="POST">
               <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
               <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             
@@ -105,49 +105,7 @@ while ($d = mysqli_fetch_array($dados))
             </div>
             </form>
 
-<?php } 
-
-//Funcao para editar ;-;
-            if(isset($_POST['editar']))
-            {
-                
-                $new_legenda=$_POST['new_legenda'];
-                $new_URL=$_POST['new_URL'];
-                $new_img=$_POST['new_img'];
-
-                echo $id_edit;
-
-                if($new_legenda == ''){
-                  $new_legenda = $legenda;
-                }
-
-                if($new_URL  == ''){
-                  $new_URL = $URL;
-                }
-
-                if($new_img  == NULL){
-                  $new_img = $img_an;
-                }
-
-                $sql = "UPDATE anuncios SET legenda = '$new_legenda', URL = '$new_URL', img_an = '$new_img' WHERE id= '$id_edit'";
-                
-                if($data->query($sql)=== TRUE){
-                ?>
-
-                    <script language="JavaScript">
-                        alert('Anuncio editado com sucesso!');
-                        location.href = 'anunciante_anuncios.php';
-                    </script>
-
-        <?php   }else{
-            ?>
-
-                    <script language="JavaScript">
-                        alert('Algo deu errado');
-                        history.go(-1);
-                    </script>    
-        <?php   } 
-            } ?>
+<?php } ?>
 
             </div>
         </div>

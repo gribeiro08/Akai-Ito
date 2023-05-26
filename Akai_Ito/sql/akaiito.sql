@@ -33,7 +33,6 @@ CREATE TABLE `anunciante` (
   `data_nasc` date NOT NULL,
   `full_name` varchar(50) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
-  `anuncio` varchar(50) NOT NULL,
   `usertype` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
