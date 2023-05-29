@@ -118,7 +118,7 @@ if(isset($_POST['register']))
 
               <!--Imagem-->    
               <div class="form-outline form-white mb-4">
-                <input type="file" accept='.png,.gif,.jpg' name="image_an" id="image_an" class="form-control form-control-lg" required/>
+                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="image_an" id="image_an" class="form-control form-control-lg" required/>
                 <label class="form-label" for="image_an">Imagem: </label>
               </div>
 

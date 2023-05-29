@@ -100,7 +100,8 @@ if(isset($_GET['id_d']))
         ?>
 
         <script language="JavaScript">
-            alert('Anuncio removido com sucesso!');            
+            alert('Anuncio removido com sucesso!');     
+            location.href = 'anunciante_anuncios.php';       
         </script>
 
    <?php }else{?>

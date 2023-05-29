@@ -40,8 +40,8 @@ CREATE TABLE `anunciante` (
 -- Extraindo dados da tabela `anunciante`
 --
 
-INSERT INTO `anunciante` (`id`, `username`, `data_nasc`, `full_name`, `password`, `anuncio`, `usertype`) VALUES
-(1, 'Claudete', '2012-12-06', 'Claudete Ramos', 'Clau1234', '', 'anunciante');
+INSERT INTO `anunciante` (`id`, `username`, `data_nasc`, `full_name`, `password`, `usertype`) VALUES
+(1, 'Claudete', '2012-12-06', 'Claudete Ramos', 'Clau1234', 'anunciante');
 
 -- --------------------------------------------------------
 
