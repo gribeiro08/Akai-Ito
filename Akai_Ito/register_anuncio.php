@@ -36,7 +36,7 @@ if(isset($_POST['register']))
 
       $an_legenda=$_POST['description'];
       $an_url=$_POST['url'];
-      $an_img=$_FILES['image_an'];
+      $an_img=$_FILES['file'];
 
 //insere anuncio na tabela
 
@@ -118,9 +118,32 @@ if(isset($_POST['register']))
 
               <!--Imagem-->    
               <div class="form-outline form-white mb-4">
-                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="image_an" id="image_an" class="form-control form-control-lg" required/>
-                <label class="form-label" for="image_an">Imagem: </label>
+                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="file" id="file" class="form-control form-control-lg" onchange="Filevalidation()" required/>
+                <label class="form-label" for="file">Imagem: </label>
               </div>
+
+              <script>
+
+                Filevalidation = () => {
+                const fi = document.getElementById('file');
+                // Check if any file is selected.
+                if (fi.files.length > 0) {
+                for (const i = 0; i <= fi.files.length - 1; i++) {
+    
+                  const fsize = fi.files.item(i).size;
+                  const file = Math.round((fsize / 1024));
+                  // The size of the file.
+                  if (file >= 16384) {
+                      alert(
+                        "Imagem muito grande, por favor insira uma imagem menor que 16MB");
+                  } nmelse {
+                      document.getElementById('size').innerHTML = '<b>'
+                      + file + '</b> KB';
+                  }
+              }
+          }
+      }
+            </script>
 
               <div class="form-outline form-white mb-4">
                 <input class="btn btn-outline-light btn-lg px-5" type="submit" name="register" value="Registrar anuncio">
