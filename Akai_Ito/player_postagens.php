@@ -104,7 +104,8 @@ if(isset($_GET['id_d']))
         ?>
 
         <script language="JavaScript">
-            alert('Publicação removido com sucesso!');            
+            alert('Publicação removido com sucesso!');   
+            location.href = 'player_postagens.php';         
         </script>
 
    <?php }else{?>
