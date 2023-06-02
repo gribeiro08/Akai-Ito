@@ -30,20 +30,19 @@ elseif($_SESSION['usertype']=='player')
     }
 
 if(isset($_POST['register']))
-    {
+  {
 
 //coleta dados do form
 
-      $an_legenda=$_POST['description'];
-      $an_url=$_POST['url'];
-      $an_img=$_FILES['file'];
+$an_legenda=$_POST['description'];
+$an_url=$_POST['url'];
 
 //insere anuncio na tabela
 
-        $sql="INSERT INTO anuncios(legenda,URL,img_an,id_user) VALUES ('$an_legenda','$an_url','$an_img','$id_user_log')";             
-        $result=mysqli_query($data,$sql);
+    $sql="INSERT INTO anuncios(legenda,URL,img_an,id_user) VALUES ('$an_legenda','$an_url','$id_user_log')";             
+    $result=mysqli_query($data,$id);
 
-        if($result)
+ /*       if($result)
         {
             echo "<script type='text/javascript'>
             alert('Data Uploaded Succcessfully');
@@ -51,6 +50,31 @@ if(isset($_POST['register']))
             
             header("location:anunciante_anuncios.php");
         }
+*/
+  $foto = $_FILES['foto']['tmp_name'];
+  $pasta = 'fotos';
+
+  $file = getimagesize($foto);
+
+  if(!preg_match('/^image\/(?:gif|jpg|jpeg|png)$/i', $file['mime'])){
+      header("Location: register_anuncio.php?Alert=Formato de imagem inválido");
+      exit();
+  }
+
+  $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+
+  $novoDestino = "{$pasta}/foto_arquivo_".uniqid('', true) . '.' . $extensao;  
+
+  move_uploaded_file ($foto , $novoDestino );
+
+  $database = ('imagens');
+
+    $id_anuncio => $id; //esse id deve ser puxado baseado no ultimo id(pk) inserido na tabela anuncios
+    $dir = $novoDestino;
+
+  $sql_img="INSERT INTO img_anuncio($id_anuncio, $dir) VALUES ('$id_anuncio','$dir')";     
+ 
+  header('Location: anunciante_anuncios.php?Alert=Anuncio cadastrado com sucesso');
 
 }
 ?>
@@ -118,32 +142,9 @@ if(isset($_POST['register']))
 
               <!--Imagem-->    
               <div class="form-outline form-white mb-4">
-                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="file" id="file" class="form-control form-control-lg" onchange="Filevalidation()" required/>
-                <label class="form-label" for="file">Imagem: </label>
+                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="foto" id="foto" class="form-control form-control-lg" onchange="Filevalidation()" required/>
+                <label class="form-label" for="foto">Imagem: </label>
               </div>
-
-              <script>
-
-                Filevalidation = () => {
-                const fi = document.getElementById('file');
-                // Check if any file is selected.
-                if (fi.files.length > 0) {
-                for (const i = 0; i <= fi.files.length - 1; i++) {
-    
-                  const fsize = fi.files.item(i).size;
-                  const file = Math.round((fsize / 1024));
-                  // The size of the file.
-                  if (file >= 16384) {
-                      alert(
-                        "Imagem muito grande, por favor insira uma imagem menor que 16MB");
-                  } nmelse {
-                      document.getElementById('size').innerHTML = '<b>'
-                      + file + '</b> KB';
-                  }
-              }
-          }
-      }
-            </script>
 
               <div class="form-outline form-white mb-4">
                 <input class="btn btn-outline-light btn-lg px-5" type="submit" name="register" value="Registrar anuncio">

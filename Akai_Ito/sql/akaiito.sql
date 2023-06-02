@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 24-Maio-2023 às 00:36
--- Versão do servidor: 10.4.25-MariaDB
--- versão do PHP: 8.1.10
+-- Host: 127.0.0.1:3307
+-- Tempo de geração: 02-Jun-2023 às 16:09
+-- Versão do servidor: 10.4.24-MariaDB
+-- versão do PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -53,7 +53,6 @@ CREATE TABLE `anuncios` (
   `id` int(11) NOT NULL,
   `legenda` varchar(150) NOT NULL,
   `URL` varchar(300) NOT NULL,
-  `img_an` mediumblob NOT NULL,
   `id_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -61,9 +60,9 @@ CREATE TABLE `anuncios` (
 -- Extraindo dados da tabela `anuncios`
 --
 
-INSERT INTO `anuncios` (`id`, `legenda`, `URL`, `img_an`, `id_user`) VALUES
-(9, 'Gatinho fofo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 0x4172726179, 1),
-(10, 'Gatinho bruxo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 0x4172726179, 1);
+INSERT INTO `anuncios` (`id`, `legenda`, `URL`, `id_user`) VALUES
+(9, 'Gatinho fofo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 1),
+(10, 'Gatinho bruxo', 'https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiuu-HIl4z_AhXopJUCHT7hCe0QFnoECA4QAQ&url=https%3A%2F%2Fpt.wikipedia.org%2Fwiki%2FGato&usg=AOvVaw0EHmUHp3UZr-ARVk1gJL1P', 1);
 
 -- --------------------------------------------------------
 
@@ -87,6 +86,18 @@ INSERT INTO `forum` (`id`, `comentario`, `id_user`, `user_name`, `story_chapter`
 (1, 'Adorei esse capítulo!!!', 2, 'jogadorzinho', 1),
 (2, 'Esse foi melhor que o primeiro :p', 2, 'jogadorzinho', 2),
 (3, 'A historia esta ficando incrivel', 3, 'vinizinho', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `img_anuncio`
+--
+
+CREATE TABLE `img_anuncio` (
+  `id_img` int(11) NOT NULL,
+  `id_anuncio` int(11) NOT NULL,
+  `dir` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -170,6 +181,13 @@ ALTER TABLE `forum`
   ADD KEY `id_user` (`id_user`);
 
 --
+-- Índices para tabela `img_anuncio`
+--
+ALTER TABLE `img_anuncio`
+  ADD PRIMARY KEY (`id_img`),
+  ADD KEY `id_anuncio` (`id_anuncio`);
+
+--
 -- Índices para tabela `jogador`
 --
 ALTER TABLE `jogador`
@@ -203,13 +221,19 @@ ALTER TABLE `anunciante`
 -- AUTO_INCREMENT de tabela `anuncios`
 --
 ALTER TABLE `anuncios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `forum`
 --
 ALTER TABLE `forum`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de tabela `img_anuncio`
+--
+ALTER TABLE `img_anuncio`
+  MODIFY `id_img` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `jogador`
@@ -244,6 +268,12 @@ ALTER TABLE `anuncios`
 --
 ALTER TABLE `forum`
   ADD CONSTRAINT `forum_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `jogador` (`id`);
+
+--
+-- Limitadores para a tabela `img_anuncio`
+--
+ALTER TABLE `img_anuncio`
+  ADD CONSTRAINT `img_anuncio_ibfk_1` FOREIGN KEY (`id_anuncio`) REFERENCES `anuncios` (`id`);
 
 --
 -- Limitadores para a tabela `jogador`
