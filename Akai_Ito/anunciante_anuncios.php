@@ -134,16 +134,20 @@ if(isset($_GET['id_d']))
             <div class="gallery-item">
                 <div class="card">
                     <div class="card-header">
-                            <!--botao de editar-->
-                            <a href="anunciante_edit_anuncio.php?id=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"></a>
-                            <!--botao de deletar-->
-                            <a href="anunciante_anuncios.php?id_d=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"></a>
 
-                            <p><?php echo $d_an['legenda']?></p>
+                        <!--botao de editar-->
+                        <a href="anunciante_edit_anuncio.php?id=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"></a>
+                        <!--botao de deletar-->
+                        <a href="anunciante_anuncios.php?id_d=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"></a>
+                        <!--titulo da imagem-->
+                        <p class="user-name"><?php echo $d_an['legenda']?></p>
+                            
+    </div>
+                            <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['imagem']?>" alt="<?php echo $d_an['legenda']?>"></a>
                     </div>
-                        <div class="gallery-item">
-			                <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['imagem']?>" alt="<?php echo $d_an['legenda']?>"></a>
-		                </div>
+                        
+			                
+		                
                 </div>    
             </div>
         </div>

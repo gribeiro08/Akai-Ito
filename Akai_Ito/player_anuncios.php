@@ -67,19 +67,21 @@ while ($d = mysqli_fetch_assoc($dados)){
     $id_an = $d['id'];
     $legenda_an = $d['legenda'];
     $url_an = $d['URL'];
-    $img_an = $d['img_an'];
+    $img_an = $d['imagem'];
 
 ?>
-
-<!--Tem que rever pq n a imagem n aparece, pode ser pq no banco esta como BLOB, num sei-->
 
 <div class="container_an">
     <div class="gallery">
 
         <div class="gallery-item">
-                    <a href="<?php echo $d['URL']?>"><img class="gallery-image" src="<?php echo $d['img_an']?>" alt="<?php echo $d['legenda']?>"></a>
+            <div class="card">
+                <div class="card-header">
+                    <p class="user-name"><?php echo $d['legenda']?></p>
+                </div>
+                <a href="<?php echo $d['URL']?>"><img class="gallery-image" src="<?php echo $d['imagem']?>" alt="<?php echo $d['legenda']?>"></a>
             </div>    
-         </div>
+        </div>
     </div>
 </div>
 

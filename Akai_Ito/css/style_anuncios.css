@@ -40,7 +40,7 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: scale-down;
 	transition: transform 400ms ease-out;
 }
 
@@ -87,6 +87,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
   }
   
   .user-image{
+    margin-left: 10px;
     border-radius: 50%;
     width: 30px;
     height: 30px;
@@ -94,9 +95,10 @@ Remove or comment-out the code block below to see how the browser will fall-back
   
   .user-name{
     font-weight: bold;
+    font-size: 2.5em;
     margin-left: 10px;
   }
-  
+
   .card-content{
     padding: 10px;
   }
