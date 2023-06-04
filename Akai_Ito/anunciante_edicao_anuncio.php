@@ -6,14 +6,16 @@ include("conexao.php");
     $id_edit = $_POST['id'];
     $new_legenda=$_POST['new_legenda'];
     $new_URL=$_POST['new_URL'];
-    $new_img=$_POST['new_img'];
-    
+    //coleta a imagem
+  $new_img = $_FILES['new_img']['tmp_name'];
+  $pasta = 'fotos';
+
     $dados = mysqli_query($data,"select * from anuncios WHERE id = '$id_edit'");
     while ($d = mysqli_fetch_array($dados))
     {
         $legenda= $d['legenda'];
         $URL = $d['URL'];
-        $img_an = $d['img_an'];
+        $img_an = $d['imagem'];
     }
 
     if($new_legenda == ''){
@@ -24,11 +26,28 @@ include("conexao.php");
         $new_URL = $URL;
     }
 
-    if($new_img  == NULL){
-        $new_img = $img_an;
+    if($new_img != NULL){
+        $file = getimagesize($new_img);
+      
+      //valida a extensao da imagem
+        if(!preg_match('/^image\/(?:gif|jpg|jpeg|png)$/i', $file['mime'])){
+            header("Location: register_anuncio.php?Alert=Formato de imagem inválido");
+            exit();
+        }
+      
+        $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
+      
+      //faz a pira de deixar com o codigo unico
+        $novoDestino = "{$pasta}/foto_arquivo_".uniqid('', true) . '.' . $extensao;  
+      
+      //salva no diretorio, na pasta fotos
+        move_uploaded_file ($new_img , $novoDestino );         
+      
+      }else{
+        $novoDestino = $img_an;
     }
 
-    $sql = "UPDATE anuncios SET legenda = '$new_legenda', URL = '$new_URL', img_an = '$new_img' WHERE id= '$id_edit'";
+    $sql = "UPDATE anuncios SET legenda = '$new_legenda', URL = '$new_URL', imagem = '$novoDestino' WHERE id= '$id_edit'";
 
     if($data->query($sql)=== TRUE){
     ?>

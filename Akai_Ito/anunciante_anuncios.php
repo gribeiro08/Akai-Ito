@@ -122,12 +122,7 @@ if(isset($_GET['id_d']))
         $id_an = $d_an['id'];
         $legenda_an = $d_an['legenda'];
         $url_an = $d_an['URL'];
-        
-        $dados_img = mysqli_query($data,"select * from img_anuncio WHERE id_img = '$id_an'");
-        while ($d_img = mysqli_fetch_assoc($dados_img))
-        {
-            $img_an = $d_img['dir'];
-        }
+        $img_an = $d_an['imagem'];
 
 ?>
 
@@ -143,9 +138,11 @@ if(isset($_GET['id_d']))
                             <a href="anunciante_edit_anuncio.php?id=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"></a>
                             <!--botao de deletar-->
                             <a href="anunciante_anuncios.php?id_d=<?php echo $id_an;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"></a>
+
+                            <p><?php echo $d_an['legenda']?></p>
                     </div>
                         <div class="gallery-item">
-			                <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['img_an']?>" alt="<?php echo $d_an['legenda']?>"></a>
+			                <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['imagem']?>" alt="<?php echo $d_an['legenda']?>"></a>
 		                </div>
                 </div>    
             </div>

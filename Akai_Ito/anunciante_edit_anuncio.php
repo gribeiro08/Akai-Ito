@@ -60,7 +60,7 @@ while ($d = mysqli_fetch_array($dados))
 {
     $legenda= $d['legenda'];
     $URL = $d['URL'];
-    $img_an = $d['img_an'];
+    $img_an = $d['imagem'];
 }
 
 //Funcao para apresentar o codigo de edicao
@@ -75,7 +75,7 @@ while ($d = mysqli_fetch_array($dados))
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="anunciante_edicao_anuncio.php" method="POST">
+            <form action="anunciante_edicao_anuncio.php" method="POST" enctype="multipart/form-data">
               <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
               <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             

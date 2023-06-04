@@ -34,28 +34,16 @@ if(isset($_POST['register']))
 
 //coleta dados do form
 
-$an_legenda=$_POST['description'];
-$an_url=$_POST['url'];
+  $an_legenda=$_POST['description'];
+  $an_url=$_POST['url'];
 
-//insere anuncio na tabela
-
-    $sql="INSERT INTO anuncios(legenda,URL,img_an,id_user) VALUES ('$an_legenda','$an_url','$id_user_log')";             
-    $result=mysqli_query($data,$id);
-
- /*       if($result)
-        {
-            echo "<script type='text/javascript'>
-            alert('Data Uploaded Succcessfully');
-            </script>";
-            
-            header("location:anunciante_anuncios.php");
-        }
-*/
+//coleta a imagem
   $foto = $_FILES['foto']['tmp_name'];
   $pasta = 'fotos';
 
   $file = getimagesize($foto);
 
+//valida a extensao da imagem
   if(!preg_match('/^image\/(?:gif|jpg|jpeg|png)$/i', $file['mime'])){
       header("Location: register_anuncio.php?Alert=Formato de imagem inválido");
       exit();
@@ -63,19 +51,20 @@ $an_url=$_POST['url'];
 
   $extensao = str_ireplace("/", "", strchr($file['mime'], "/"));
 
+//faz a pira de deixar com o codigo unico
   $novoDestino = "{$pasta}/foto_arquivo_".uniqid('', true) . '.' . $extensao;  
 
+//salva no diretorio, na pasta fotos
   move_uploaded_file ($foto , $novoDestino );
 
-  $database = ('imagens');
+//insere anuncio na tabela
+  $sql="INSERT INTO anuncios(legenda,URL,id_user,imagem) VALUES ('$an_legenda','$an_url','$id_user_log','$novoDestino')";    
+  if ($data->query($sql) === TRUE) {
+    $lastInsertedId = $data->insert_id; // Obtém o ID do último registro inserido           
 
-    $id_anuncio => $id; //esse id deve ser puxado baseado no ultimo id(pk) inserido na tabela anuncios
-    $dir = $novoDestino;
+header('Location: anunciante_anuncios.php?Alert=Anuncio cadastrado com sucesso');
 
-  $sql_img="INSERT INTO img_anuncio($id_anuncio, $dir) VALUES ('$id_anuncio','$dir')";     
- 
-  header('Location: anunciante_anuncios.php?Alert=Anuncio cadastrado com sucesso');
-
+    }
 }
 ?>
 
@@ -142,7 +131,7 @@ $an_url=$_POST['url'];
 
               <!--Imagem-->    
               <div class="form-outline form-white mb-4">
-                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="foto" id="foto" class="form-control form-control-lg" onchange="Filevalidation()" required/>
+                <input type="file" accept='.png,.gif,.jpg,.jpeg' name="foto" id="foto" class="form-control form-control-lg" required/>
                 <label class="form-label" for="foto">Imagem: </label>
               </div>
 
