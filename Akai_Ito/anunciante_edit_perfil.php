@@ -34,7 +34,7 @@ include("conexao.php");
 
 </head>
 <body>
-<section class="h-auto gradient-custom">
+<section class="min-vh-100 gradient-custom">
 
 <!--navbar-->
   <nav>
