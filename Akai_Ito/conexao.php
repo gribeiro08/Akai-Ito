@@ -1,15 +1,19 @@
 <?php
-/* Computadores da faculdade deve ser:*/
-/**/
+/* Computadores da faculdade deve ser:
 $host="localhost:3307";
+*/
 
 /*Computador pessoal deve ser:
-/*$host="localhost";*/
+$host="localhost";
+*/
+
+/* Computador Hack*/
+$host="perna.local";
 
 
-$user="eu";
+$user="perninha";
 
-$password="1234";
+$password="perninha";
 
 $db="akaiito";
 
