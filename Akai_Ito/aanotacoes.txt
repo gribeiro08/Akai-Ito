@@ -1,0 +1,102 @@
+entre no arquivo "conexao.php" e veja qual $host deve usar
+entre no phpmyadmin
+crie o banco de dados "akaiito"
+copie o tudo do arquivo "akaiito.sql" da pasta sql
+
+
+Possiveis modificações
+
+--------------------- Caso precise adicionar um campo em jogador ------------------------------
+
+Fazendo o novo campo no registro e salvando ele 
+
+1- adiciona na tabela no banco de dados
+2- na pagina "register.php" adiciona mais um campo no form de registro na parte de html
+3- bem no começo da pagina fala onde tem que inserir $nomeDaSuaVariavel=$_POST['nome colocado no id/nome do campo do form']
+4- analisa a parte de php do site e acha o comentario /* caso o tipo de usuario seja = 'player' */
+5- acha onde tem o comentario //insere na tabela jogador  
+6- adiciona o nome do campo criado na tabela pos ultimo onde tem o comentario /*nomes que estao no banco de dados (tem que ser igual e na mesma ordem)*/
+7- adiciona o nome da variavel criada onde tem o comentario /*variaveis com valores do form (tem que estar na mesma ordem)*/
+
+Fazendo o novo campo aparecer no perfil
+
+1- no arquivo "player_perfil.php" encontre a função que recupera dados da tabela
+2- ache o comentario //no caso de um novo campo da tabela adicionar nova variavel $nomeDaSuaVariavel=$d['nome igual dela igual a salva no banco de dados'] e adicione a nova variavel
+3- analise o codigo na parte de html e ache o comentario <!--display do perfil do user-->
+4- onde tem o comentario <!--adicione aqui o novo campo-->, coloque <h4>nome do novo campo: <?php echo $nome da variavel escolhida; ?></h4>
+
+Fazendo o novo campo aparecer na tela de edição
+
+1- no arquivo "player_edit_perfil.php", ache a funçao que recupera os dados da tabela e faça uma variavel igual a feita acima para aparecer no perfil mas nessa pagina
+2- adicione o campo no form de edição
+3- recupere o dado do formulario onde tem o comentario //recupera os dados do form e os adiciona a variavel
+4- adiciona um if onde tem o comentario //cada if serve para quando nao for adicionado valor em qaulquer campo da tabela, mantem o valor que tinha sido salvo
+5- onde tem o comentario //atualiza os dados da tabela antes do WHERE coloque " , nome que esta no banco de dados = '$nomeDaSuaVariavel' "
+
+
+
+
+
+
+--------------------- Caso precise adicionar um campo em jogador ------------------------------
+
+Fazendo o novo campo no registro e salvando ele 
+
+1- adiciona na tabela no banco de dados
+2- na pagina "register.php" adiciona mais um campo no form de registro na parte de html
+3- bem no começo da pagina fala onde tem que inserir $nomeDaSuaVariavel=$_POST['nome colocado no id/nome do campo do form']
+4- analisa a parte de php do site e acha o comentario /* caso o tipo de usuario seja = 'anunciante' */
+5- acha onde tem o comentario //insere na tabela anunciante  
+6- adiciona o nome do campo criado na tabela pos ultimo onde tem o comentario /*nomes que estao no banco de dados (tem que ser igual e na mesma ordem)*/
+7- adiciona o nome da variavel criada onde tem o comentario /*variaveis com valores do form (tem que estar na mesma ordem)*/
+
+Fazendo o novo campo aparecer no perfil
+
+1- no arquivo "anucniante_perfil.php" encontre a função que recupera dados da tabela
+2- ache o comentario //no caso de um novo campo da tabela adicionar nova variavel $nomeDaSuaVariavel=$d['nome igual dela igual a salva no banco de dados'] e adicione a nova variavel
+3- analise o codigo na parte de html e ache o comentario <!--display do perfil do user-->
+4- onde tem o comentario <!--adicione aqui o novo campo-->, coloque <h4>nome do novo campo: <?php echo $nome da variavel escolhida; ?></h4>
+
+Fazendo o novo campo aparecer na tela de edição
+
+1- no arquivo "anunciante_edit_perfil.php", ache a funçao que recupera os dados da tabela e faça uma variavel igual a feita acima para aparecer no perfil mas nessa pagina
+2- adicione o campo no form de edição
+3- recupere o dado do formulario onde tem o comentario //recupera os dados do form e os adiciona a variavel
+4- adiciona um if onde tem o comentario //cada if serve para quando nao for adicionado valor em qaulquer campo da tabela, mantem o valor que tinha sido salvo
+5- onde tem o comentario //atualiza os dados da tabela antes do WHERE coloque " , nome que esta no banco de dados = '$nomeDaSuaVariavel' "
+
+
+
+
+--------------------- Caso precise adicionar um campo em publicação ------------------------------
+
+mesma logica dos de cima
+arquivos que serao utilizados/editados:
+
+- register_publicacao.php
+- player_postagens.php
+- player_edit_postagem.php
+- player_edicao_publicacao.php
+
+criar na tabela ....
+adicionar no form (de cadastro e de edicao)....
+editar todas as funcoes que recupera dados tanto do form, quanto do banco de dados/tabela... 
+editar as funcoes que atualizam a tabela ...
+editar display de dados ...
+
+
+--------------------- Caso precise adicionar um campo em anuncio ------------------------------
+
+mesma logica dos de cima
+arquivos que serao utilizados/editados:
+
+- register_anuncio.php
+- anunciante_anuncios.php
+- anunciante_edit_anuncio.php
+- anunciante_edicao_anuncio.php
+
+criar na tabela ....
+adicionar no form (de cadastro e de edicao)....
+editar todas as funcoes que recupera dados tanto do form, quanto do banco de dados/tabela... 
+editar as funcoes que atualizam a tabela ...
+editar display de dados ...

@@ -4,44 +4,68 @@ session_start();
     
 include("conexao.php");
 
+//acontece quando o botao de registrar é apertado
 if(isset($_POST['register']))
 {
+    //adiciona o que foi digitado nas variaveis
+    //na inserçaõ de um novo campo deve fazer mais um: 
+    //$nomeDaSuaVariavel=$_POST['nome colocado no id/nome do campo do form']
     $username=$_POST['username'];
     $user_full_name=$_POST['name'];
     $user_data_nasc=$_POST['data_nasc'];
     $user_password=$_POST['password'];
     $user_type=$_POST['usertype'];
 
-//caso o tipo de ussuario seja = 'anunciante' 
+//caso o tipo de usuario seja = 'anunciante' 
+
     if($user_type=='anunciante')
-    {    
+    {   
+        //verifica se o nome de usuario nao existe 
         $check="SELECT * FROM anunciante WHERE username='$username'";
         $check_user=mysqli_query($data,$check);
         $row_count=mysqli_num_rows($check_user);
 
+        //caso exista mostra essa mensagem
         if($row_count==1)
         {
         echo "<script type='text/javascript'>
             alert('Nome de usuário já existente.');
             </script>";
         }
+        //caso o nome de usuario nao exista
         else 
         {
-            $sql="INSERT INTO anunciante(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
-            $result=mysqli_query($data,$sql);
+            //insere na tabela anunciante  
+            $sql="INSERT INTO anunciante
+            /*nomes que estao no banco de dados (tem que ser igual e na mesma ordem)*/
+            (username,
+            data_nasc,
+            usertype,
+            full_name,
+            password) VALUES 
+            /*variaveis com valores do form (tem que estar na mesma ordem)*/
+            ('$username',
+            '$user_data_nasc',
+            '$user_type',
+            '$user_full_name',
+            '$user_password')";        
 
+            $result=mysqli_query($data,$sql);
+            
+            //se a inserção der certo notifica
             if($result)
             {
                 echo "<script type='text/javascript'>
-                alert('Data Uploaded Succcessfully');
+                alert('Dado inserido com sucesso');
                 </script>";
                 
-                
+                //se nao der certo faz isso (mas normalmente funciona)
                 if($data===false)
                 {
                     die("connection error");
                 }    
 
+                //se estiver dando certo ele busca o nome de usuario e senha na tabela e se forem correspondentes o usuario é redirecionado com sucesso
                 if($_SERVER["REQUEST_METHOD"]=="POST")
                 {
                     $name = $_POST['username'];
@@ -57,14 +81,15 @@ if(isset($_POST['register']))
                         $_SESSION['usertype']="anunciante";
                         header("location:anunciantehome.php");
                     }
-
+                    
+                    //se o nome de usuario ou senha nao forem correspondentes ele manda para tela de login
                     else
                     {      
                         header("location:login_anunciante.php");
                     }
                 }
             }
-        else
+        else //se nao funcionar a inserção ele notifica
         {
             echo "<script type='text/javascript'>
             alert('Algo deu errado.');
@@ -75,36 +100,56 @@ if(isset($_POST['register']))
         }
     }
 
-/*caso o tipo de ussuario seja = 'player'  */      
+/* caso o tipo de usuario seja = 'player' */      
+
     elseif($user_type=='player')
     {    
+        //verifica se o nome de usuario nao existe
         $check="SELECT * FROM jogador WHERE username='$username'";
         $check_user=mysqli_query($data,$check);
         $row_count=mysqli_num_rows($check_user);
 
+        //caso exista mostra essa mensagem
         if($row_count==1)
         {
         echo "<script type='text/javascript'>
             alert('Nome de usuário já existente.');
             </script>";
         }
+        //caso o nome de usuario nao exista
         else 
         {
-            $sql="INSERT INTO jogador(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
+            //insere na tabela jogador       
+            $sql="INSERT INTO jogador
+            /*nomes que estao no banco de dados (tem que ser igual e na mesma ordem)*/
+            (username,
+            data_nasc,
+            usertype,
+            full_name,
+            password) VALUES 
+            /*variaveis com valores do form (tem que estar na mesma ordem)*/
+            ('$username',
+            '$user_data_nasc',
+            '$user_type',
+            '$user_full_name',
+            '$user_password')";          
+
             $result=mysqli_query($data,$sql);
 
+            //se a inserção der certo notifica
             if($result)
             {
                 echo "<script type='text/javascript'>
-                alert('Data Uploaded Succcessfully');
+                alert('Dado inserido com sucesso');
                 </script>";
                 
-                
+                //se nao der certo faz isso (mas normalmente funciona)
                 if($data===false)
                 {
                     die("connection error");
                 }    
 
+                //se estiver dando certo ele busca o nome de usuario e senha na tabela e se forem correspondentes o usuario é redirecionado com sucesso
                 if($_SERVER["REQUEST_METHOD"]=="POST")
                 {
                     $name = $_POST['username'];
@@ -120,14 +165,14 @@ if(isset($_POST['register']))
                         $_SESSION['usertype']="player";
                         header("location:playerhome.php");
                     }
-
+                    
+                    //se o nome de usuario ou senha nao forem correspondentes ele manda para tela de login
                     else
                     {      
                         header("location:login_player.php");
                     }
                 }
-            }
-        else
+            }else //se nao funcionar a inserção ele notifica
         {
             echo "<script type='text/javascript'>
             alert('Algo deu errado.');
@@ -185,25 +230,25 @@ if(isset($_POST['register']))
               <h2 class="fw-bold mb-2 text-uppercase">Registro</h2>
               <p class="text-white-50 mb-5">Por favor insira seus dados!</p>
             
-              <!--Nome de usuario-->    
+              <!--Campo Nome de usuario-->    
               <div class="form-outline form-white mb-4">
                 <input type="text" id="typeUsername" name="username" class="form-control form-control-lg" required/>
                 <label class="form-label" for="typeUsername">Nome de usuário</label>
               </div>
 
-              <!--Nome completo-->  
+              <!--Campo Nome completo-->  
               <div class="form-outline form-white mb-4">
                 <input type="text" id="typeFullName" name="name" class="form-control form-control-lg" required/>
                 <label class="form-label" for="typeFullName">Nome completo</label>
               </div>
 
-              <!--Data de nascimento-->  
+              <!--Campo Data de nascimento-->  
               <div class="form-outline form-white mb-4">
                 <input type="date" min="1850-01-01" max="2012-12-30" id="data_nasc" name="data_nasc" class="form-control form-control-lg" required/>
                 <label class="form-label" for="data_nasc">Data de nascimento</label>
               </div>
 
-              <!--Tipo de usuario --> 
+              <!--Campo Tipo de usuario --> 
               <div class="form-outline form-white mb-4">
                 <select id="usertype" name="usertype" class="form-control form-control-lg" required>
                 <option value="" disabled selected>Selecione um tipo</option>
@@ -213,7 +258,7 @@ if(isset($_POST['register']))
                 <label class="form-label" for="usertype">Selecione o tipo de conta</label>
               </div>
 
-              <!--Senha-->  
+              <!--Campo Senha-->  
               <div class="form-outline form-white mb-4">
                 <input type="password" name="password" id="password" class="form-control form-control-lg" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9]{8,})" required/>
                 <label class="form-label" for="password">Senha <br> Formato de senha exigido :</label>
@@ -225,7 +270,7 @@ if(isset($_POST['register']))
                     </ol> 
               </div>
 
-              <!--Confirmaçao de senha--> 
+              <!--Campo Confirmaçao de senha--> 
               <div class="form-outline form-white mb-4">
                 <input type="password" name="password_confirmation" id="confirm_password" class="form-control form-control-lg" required/>
                 <label class="form-label" for="confirm_password">Confirme sua senha</label>

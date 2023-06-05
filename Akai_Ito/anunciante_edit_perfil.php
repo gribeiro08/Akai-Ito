@@ -70,6 +70,7 @@ while ($d = mysqli_fetch_array($dados)){
  if(isset($_GET['id']))
         { ?>
 
+<!--form de edição-->
   <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
@@ -108,15 +109,17 @@ while ($d = mysqli_fetch_array($dados)){
 
 <?php } 
 
+//caso o botao editar seja apertado
             if(isset($_POST['editar']))
             {
-                
+                //recupera os dados do form e os adiciona a variavel
                 $new_username=$_POST['new_username'];
                 $new_user_full_name=$_POST['new_name'];
                 $new_user_data_nasc=$_POST['new_data_nasc'];
 
                 echo $id_log;
 
+                // cada if serve para quando nao for adicionado valor em qaulquer campo da tabela, mantem o valor que tinha sido salvo
                 if($new_username == ''){
                   $new_username = $username_log;
                 }
@@ -127,8 +130,9 @@ while ($d = mysqli_fetch_array($dados)){
 
                 if($new_user_data_nasc  == NULL){
                   $new_user_data_nasc = $data_nasc_log;
-                }
+                } //NULL pois é data
 
+                //atualiza os dados da tabela
                 $sql = "UPDATE anunciante SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
                 
                 if($data->query($sql)=== TRUE){

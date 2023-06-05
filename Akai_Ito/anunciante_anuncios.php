@@ -49,7 +49,9 @@ include("conexao.php");
 </head>
 <body>
 <section class="min-vh-100 gradient-custom">    
+
 <!--navbar-->
+
     <nav>
 
         <img class="logo" src="img/akai-ito-.png" alt="some text" width=150 height=50>
@@ -76,6 +78,7 @@ include("conexao.php");
         <a href="register_anuncio.php" class="custom-btn btn-4">Cadastrar novo anuncio</a>
     </div>
     <?php             
+    
 //Funcao para deletar anuncio a partir do id
 
 if(isset($_GET['id_d']))
@@ -115,7 +118,7 @@ if(isset($_GET['id_d']))
     } 
 }?>
 <?php
-//Funcao que recupera dados da tabela anuncios
+//Funcao que recupera dados da tabela anuncios (apenas as anuncios do usuario logado)
 
     $dados_an = mysqli_query($data,"select * from anuncios WHERE id_user = '$id_user_log'");
     while ($d_an = mysqli_fetch_assoc($dados_an)){
@@ -126,7 +129,7 @@ if(isset($_GET['id_d']))
 
 ?>
 
-<!--Tem que rever pq n a imagem n aparece, pode ser pq no banco esta como BLOB, num sei-->
+<!--card de dispay dos anuncios -->
 
     <div class="container_an">
         <div class="gallery">
@@ -142,8 +145,9 @@ if(isset($_GET['id_d']))
                         <!--titulo da imagem-->
                         <p class="user-name"><?php echo $d_an['legenda']?></p>
                             
-    </div>
-                            <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['imagem']?>" alt="<?php echo $d_an['legenda']?>"></a>
+                    </div>
+                        <!--imagem do anuncio-->
+                        <a href="<?php echo $d_an['URL']?>"><img class="gallery-image" src="<?php echo $d_an['imagem']?>" alt="<?php echo $d_an['legenda']?>"></a>
                     </div>
                         
 			                

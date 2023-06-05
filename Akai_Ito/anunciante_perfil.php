@@ -2,6 +2,7 @@
 session_start();
 include("conexao.php");
 
+//controle de sessao
     if(!isset($_SESSION['username']))
     {
         header("location:login_anunciante.php");
@@ -50,12 +51,13 @@ include("conexao.php");
     </nav>
     <p><br><br><br><br></p>
 
+<!--titulo-->
+
     <div style="text-align:center">
         <h1 class="titulo_pagina">Perfil do Anunciante</h1>
     </div>
 
 <?php
-/*conexao com o banco de dados e inicio da sessao*/
  
 //Funcao que verifica login
 
@@ -71,6 +73,7 @@ include("conexao.php");
         $data_nasc_log = $d['data_nasc'];
         $full_name_log = $d['full_name'];
         $password_log = $d['password'];
+        //no caso de um novo campo da tabela, adicionar nova variavel $nomeDaSuaVariavel=$d['nome igual dela igual a salva no banco de dados']
     }
 
 //Funcao para deletar conta a partir do id
@@ -114,7 +117,7 @@ include("conexao.php");
 
 <div class="quadrado">
     <header class="perfil">
-    <!--<img class="perfil-foto" src="#" /> -->
+    <!--  suposta imagem do usuario <img class="perfil-foto" src="#" /> -->
       <div class="titulo">
         <h1>Nome de usuario: <?php echo $name_log; ?></h1>
         <h3>Nome completo: <?php echo $full_name_log; ?></h3>
@@ -128,7 +131,8 @@ include("conexao.php");
         <h4>Data de nascimento: <?php echo $data_nasc_log; ?></h4>
             <br>
         <h4>Senha: <?php echo $password_log; ?></h4>
-  
+            <br>
+        <!--adicione aqui o novo campo-->
     </main>
   </div>
 

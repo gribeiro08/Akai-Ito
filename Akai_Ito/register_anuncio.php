@@ -57,6 +57,7 @@ if(isset($_POST['register']))
 //salva no diretorio, na pasta fotos
   move_uploaded_file ($foto , $novoDestino );
 
+
 //insere anuncio na tabela
   $sql="INSERT INTO anuncios(legenda,URL,id_user,imagem) VALUES ('$an_legenda','$an_url','$id_user_log','$novoDestino')";    
   if ($data->query($sql) === TRUE) {
@@ -107,6 +108,7 @@ header('Location: anunciante_anuncios.php?Alert=Anuncio cadastrado com sucesso')
         <br><br>
     </div>
 
+<!--form de registro-->
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">

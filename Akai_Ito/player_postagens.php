@@ -79,7 +79,8 @@ include("conexao.php");
         <a href="register_publicacao.php" class="custom-btn btn-4">Cadastrar nova publicação</a>
     </div>
 
-<?php             
+<?php          
+
 //Funcao para deletar anuncio a partir do id
 
 if(isset($_GET['id_d']))
@@ -119,7 +120,7 @@ if(isset($_GET['id_d']))
     } 
 }
 
-//Funcao que recupera dados da tabela forum
+//Funcao que recupera dados da tabela forum (apenas as publicaçoes do usuario logado)
 
     $dados_publi = mysqli_query($data,"select * from forum WHERE id_user='$id_user_log'");
     while ($d_pb = mysqli_fetch_assoc($dados_publi)){
@@ -131,27 +132,31 @@ if(isset($_GET['id_d']))
     
 ?>
 
-<!--Tem que rever pq n a imagem n aparece, pode ser pq no banco esta como BLOB, num sei-->
-
+<!--card de dispay das publicaçoes -->
 
         <div class="card">
             <div class="card-header">
+                
+                <!--fotinha de perfil-->
                 <img class="user-image" src="https://i.pinimg.com/originals/4b/3e/02/4b3e0279e016cc145240de10c8a06fb6.png">
+                <!--nome de usuario-->
                 <p class="user-name"><?php echo $d_pb['user_name']?></p>
                 <p>&nbsp&nbsp&nbsp&nbsp</p>
-                <!--botao de editar-->
+                <!--botao/icone de editar-->
                 <a href="player_edit_postagem.php?id=<?php echo $id_pb;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1159/1159633.png"></a>
-                <!--botao de deletar-->
+                <!--botao/icone de deletar-->
                 <a href="player_postagens.php?id_d=<?php echo $id_pb;?>"><img class="user-image" src="https://cdn-icons-png.flaticon.com/512/1214/1214428.png"></a>
 
             </div>
 
             <div class="card-content">
+                <!--comentario/publicacao-->
                 <p><?php echo $d_pb['comentario']?></p>
                 <hr>
             </div>
 
             <div class="card-actions">
+                <!--capitulo-->
                 <p>Capítulo: <?php echo $d_pb['story_chapter']?></p>
             </div>
         </div>  

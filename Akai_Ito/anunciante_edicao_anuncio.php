@@ -2,14 +2,16 @@
 session_start();
 include("conexao.php");
 
-//Funcao que edita os dados da tabela
+//Funcao que recupera os dados da tabela
     $id_edit = $_POST['id'];
     $new_legenda=$_POST['new_legenda'];
     $new_URL=$_POST['new_URL'];
-    //coleta a imagem
+
+  //coleta a imagem
   $new_img = $_FILES['new_img']['tmp_name'];
   $pasta = 'fotos';
 
+//recupera os dados da tabela de acordo com o id que foi passado pelo botao na pagina anterior e os adiciona a variaveis      
     $dados = mysqli_query($data,"select * from anuncios WHERE id = '$id_edit'");
     while ($d = mysqli_fetch_array($dados))
     {
@@ -18,6 +20,7 @@ include("conexao.php");
         $img_an = $d['imagem'];
     }
 
+    //se nulo no form mantem oque ja estava salvo
     if($new_legenda == ''){
         $new_legenda = $legenda;
     }
@@ -47,6 +50,8 @@ include("conexao.php");
         $novoDestino = $img_an;
     }
 
+
+    //atualiza os dados da tabela
     $sql = "UPDATE anuncios SET legenda = '$new_legenda', URL = '$new_URL', imagem = '$novoDestino' WHERE id= '$id_edit'";
 
     if($data->query($sql)=== TRUE){

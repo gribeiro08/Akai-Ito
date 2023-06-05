@@ -69,13 +69,14 @@ while ($d = mysqli_fetch_array($dados))
 
 ?>
 
+<!--form de edicao-->
   <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="anunciante_edicao_anuncio.php" method="POST" enctype="multipart/form-data">
+            <form action="anunciante_edicao_anuncio.php" method="POST" enctype="multipart/form-data"> <!--ao click do botao ele envia para o anunciante_edicao_anuncio.php, pq sim (tava dando erro, essa foi a unica formja de arrumar)-->
               <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
               <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             
@@ -99,7 +100,7 @@ while ($d = mysqli_fetch_array($dados))
 
               <div class="form-outline form-white mb-4">
                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" class="form-control form-control-lg" required/>
-                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="editar" value="Editar">
+                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="editar" value="Editar"> <!--ele envia o id da publicacao pra pagina anuncio_edicao_anuncio.php onde ocorre de fato a ediçao-->
               </div>
 
             </div>

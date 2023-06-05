@@ -1,4 +1,5 @@
 <?php
+/*conexao com o banco de dados e incicio de sessao */
 session_start();
 include("conexao.php");
 
@@ -56,7 +57,7 @@ include("conexao.php");
 
 <?php
 
-//Funcao que apresenta o form de edicao
+//Funcao que apresenta o form de edicao 
 if(isset($_GET['id']))
 { 
     $id_edit=$_GET['id'];
@@ -70,13 +71,14 @@ if(isset($_GET['id']))
 
 ?>
 
+<!--form de edicao-->
   <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
         <div class="card bg-dark text-white" style="border-radius: 1rem;">
           <div class="card-body p-5 text-center">
 
             <div class="mb-md-5 mt-md-4 pb-5">
-            <form action="player_edicao_publicacao.php" method="POST">
+            <form action="player_edicao_publicacao.php" method="POST"> <!--ao click do botao ele envia para o player_edit_postagem.php, pq sim (tava dando erro, essa foi a unica formja de arrumar)-->
               <h2 class="fw-bold mb-2 text-uppercase">Editar</h2>
               <p class="text-white-50 mb-5">Por favor insira os dados!</p>
             
@@ -94,7 +96,7 @@ if(isset($_GET['id']))
 
             <div class="form-outline form-white mb-4">
                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>" class="form-control form-control-lg" required/>
-                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="editar_pb" value="Editar">
+                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="editar_pb" value="Editar"> <!--ele envia o id da publicacao pra pagina player_edicao_postagem.php onde ocorre de fato a ediçao-->
             </div>
 
             </div>
