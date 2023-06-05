@@ -8,10 +8,10 @@ include("conexao.php");
 if(isset($_POST['register']))
 {
     //adiciona o que foi digitado nas variaveis
-    //na inserçaõ de um novo campo deve fazer mais um: 
+    //na inserção de um novo campo deve fazer mais um: 
     //$nomeDaSuaVariavel=$_POST['nome colocado no id/nome do campo do form']
     $username=$_POST['username'];
-    $nickname=$_POST['nickname']
+    $nickname=$_POST['nickname'];
     $user_full_name=$_POST['name'];
     $user_data_nasc=$_POST['data_nasc'];
     $user_password=$_POST['password'];
