@@ -8,6 +8,7 @@ include("conexao.php");
     if(isset($_POST['register']))
     {
         $username=$_POST['username'];
+        $nickname=$_POST['nickname'];
         $user_full_name=$_POST['name'];
         $user_data_nasc=$_POST['data_nasc'];
         $user_password=$_POST['password'];
@@ -25,7 +26,7 @@ include("conexao.php");
             }
             else 
             {
-                $sql="INSERT INTO jogador(username,data_nasc,usertype,full_name,password) VALUES ('$username','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
+                $sql="INSERT INTO jogador(username,nickname,data_nasc,usertype,full_name,password) VALUES ('$username','$nickname','$user_data_nasc','$user_type','$user_full_name','$user_password')";             
                 $result=mysqli_query($data,$sql);
 
                 if($result)

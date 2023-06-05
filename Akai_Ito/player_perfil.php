@@ -77,7 +77,6 @@ include("conexao.php");
         $data_nasc_log = $d['data_nasc'];
         $full_name_log = $d['full_name'];
         $password_log = $d['password'];
-        //no caso de um novo campo da tabela, adicionar nova variavel $nomeDaSuaVariavel=$d['nome igual dela igual a salva no banco de dados']
     }
 
 //Funcao para deletar conta a partir do id
@@ -136,7 +135,6 @@ include("conexao.php");
             <br>
         <h4>Senha: <?php echo $password_log; ?></h4>
             <br>
-        <!--adicione aqui o novo campo-->
     </main>
   </div>
 

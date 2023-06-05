@@ -53,12 +53,12 @@ include("conexao.php");
 
 <?php
 
-//Funcao que verifica login
+//Função que verifica login
 
 $l = isset($_SESSION["username"]) ?$_SESSION["username"]:"";
 $s = isset($_SESSION["password"]) ?$_SESSION["password"]:"";
 
-//Funcao que recupera dados da tabela
+//Função que recupera dados da tabela
 
 $dados = mysqli_query($data,"select * from jogador WHERE username = '$l'");
 while ($d = mysqli_fetch_array($dados)){
