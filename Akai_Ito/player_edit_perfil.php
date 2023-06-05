@@ -90,7 +90,7 @@ while ($d = mysqli_fetch_array($dados)){
 
               <!-- Campo de Apelido (Nickname) de usuário -->
               <div class="form-outline form-white mb-4">
-                <input type="text" id="typeNickname" name="nickname" class="form-control form-control-lg" required/>
+                <input type="text" id="typeNickname" name="nickname" class="form-control form-control-lg" placeholder="<?php echo $nickname_log; ?>"/>
                 <label class="form-label" for="typeNickname">Apelido de Usuário</label>
               </div>
 
