@@ -64,6 +64,7 @@ $dados = mysqli_query($data,"select * from jogador WHERE username = '$l'");
 while ($d = mysqli_fetch_array($dados)){
     $id_log = $d['id'];
     $username_log = $d['username'];
+    $nickname_log = $d['nickname'];
     $full_name_log = $d['full_name'];
     $data_nasc_log = $d['data_nasc'];
 }
@@ -85,6 +86,12 @@ while ($d = mysqli_fetch_array($dados)){
               <div class="form-outline form-white mb-4">
                 <input type="text" id="new_username" name="new_username" class="form-control form-control-lg"  placeholder="<?php echo $username_log; ?>"/>
                 <label class="form-label" for="new_username">Nome de usuário</label>
+              </div>
+
+              <!-- Campo de Apelido (Nickname) de usuário -->
+              <div class="form-outline form-white mb-4">
+                <input type="text" id="typeNickname" name="nickname" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typeNickname">Apelido de Usuário</label>
               </div>
 
               <!--Nome completo-->  
@@ -115,6 +122,7 @@ while ($d = mysqli_fetch_array($dados)){
             {
                 //recupera os dados do form e os adiciona a variavel
                 $new_username=$_POST['new_username'];
+                $new_nickname=$_POST['new_nickname'];
                 $new_user_full_name=$_POST['new_name'];
                 $new_user_data_nasc=$_POST['new_data_nasc'];
 
@@ -123,6 +131,10 @@ while ($d = mysqli_fetch_array($dados)){
                 // cada if serve para quando nao for adicionado valor em qaulquer campo da tabela, mantem o valor que tinha sido salvo
                 if($new_username == ''){
                   $new_username = $username_log;
+                }
+
+                if($new_nickname  == ''){
+                  $new_nickname = $nickname_log;
                 }
 
                 if($new_user_full_name  == ''){
@@ -134,7 +146,7 @@ while ($d = mysqli_fetch_array($dados)){
                 } //NULL pois é data
 
                 //atualiza os dados da tabela
-                $sql = "UPDATE jogador SET username = '$new_username', data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
+                $sql = "UPDATE jogador SET username = '$new_username', nickname = '$new_nickname',data_nasc = '$new_user_data_nasc', full_name = '$new_user_full_name' WHERE id= '$id_log'";
                 
                 if($data->query($sql)=== TRUE){
                 ?>
