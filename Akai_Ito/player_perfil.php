@@ -95,24 +95,30 @@ include("conexao.php");
 
         if(isset($_POST['deletar']))
         {
-            $sql = "DELETE FROM jogador WHERE id= '$id_log'";
+            $sql_pb = "DELETE FROM forum WHERE id_user= '$id_log'";
+
+            if($data->query($sql_pb)=== TRUE)
+            {
+                $sql = "DELETE FROM jogador WHERE id= '$id_log'";
             
-            if($data->query($sql)=== TRUE){
+                if($data->query($sql)=== TRUE){
+                ?>
+
+                <script language="JavaScript">
+                    alert('Cliente removido com sucesso!');
+                    location.href = 'index.php';
+                </script>
+
+        <?php }else{
             ?>
 
-            <script language="JavaScript">
-                alert('Cliente removido com sucesso!');
-                location.href = 'index.php';
-            </script>
-
-       <?php }else{
-           ?>
-
-            <script language="JavaScript">
-                alert('Algo deu errado');
-                history.go(-1);
-            </script>    
-        <?php } 
+                <script language="JavaScript">
+                    alert('Algo deu errado');
+                    history.go(-1);
+                </script>    
+            <?php }
+            }
+             
         } ?>
 
 <!--display do perfil do user-->

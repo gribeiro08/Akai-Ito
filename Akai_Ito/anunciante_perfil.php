@@ -92,24 +92,30 @@ include("conexao.php");
 
         if(isset($_POST['deletar']))
         {
-            $sql = "DELETE FROM anunciante WHERE id= '$id_log'";
+            $sql_an = "DELETE FROM anuncios WHERE id_user= '$id_log'";
+
+            if($data->query($sql_an)=== TRUE)
+            {
+                $sql = "DELETE FROM anunciante WHERE id= '$id_log'";
             
-            if($data->query($sql)=== TRUE){
+                if($data->query($sql)=== TRUE){
+                ?>
+
+                <script language="JavaScript">
+                    alert('Cliente removido com sucesso!');
+                    location.href = 'index.php';
+                </script>
+
+        <?php }else{
             ?>
 
-            <script language="JavaScript">
-                alert('Cliente removido com sucesso!');
-                location.href = 'index.php';
-            </script>
-
-       <?php }else{
-           ?>
-
-            <script language="JavaScript">
-                alert('Algo deu errado');
-                history.go(-1);
-            </script>    
-        <?php } 
+                <script language="JavaScript">
+                    alert('Algo deu errado');
+                    history.go(-1);
+                </script>    
+            <?php }
+                }
+             
         } ?>
 
 
