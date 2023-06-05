@@ -73,7 +73,7 @@ include("conexao.php");
     while ($d = mysqli_fetch_array($dados)){
         $id_log = $d['id'];
         $name_log = $d['username'];
-        $nickname = $d['nickname'];
+        $nickname_log = $d['nickname'];
         $data_nasc_log = $d['data_nasc'];
         $full_name_log = $d['full_name'];
         $password_log = $d['password'];
@@ -123,7 +123,7 @@ include("conexao.php");
     <!-- suposta imagem do usuario <img class="perfil-foto" src="#" /> -->
       <div class="titulo">
         <h1>Nome de usuario: <?php echo $name_log; ?></h1>
-        <h3>Apelido de Usuário: <?php echo $nickname; ?></h3>
+        <h3>Apelido de Usuário: <?php echo $nickname_log; ?></h3>
         <h3>Nome completo: <?php echo $full_name_log; ?></h3>
       </div>
     </header>
