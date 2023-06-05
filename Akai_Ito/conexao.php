@@ -10,10 +10,17 @@ $host="localhost";
 /* Computador Hack*/
 $host="perna.local";
 
-
 $user="perninha";
 
 $password="perninha";
+
+/*
+$host="localhost";
+
+$user="eu";
+
+$password="1234";
+*/
 
 $db="akaiito";
 
