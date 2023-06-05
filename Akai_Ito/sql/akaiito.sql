@@ -89,6 +89,7 @@ INSERT INTO `forum` (`id`, `comentario`, `id_user`, `user_name`, `story_chapter`
 CREATE TABLE `jogador` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `nickname` varchar(50) NOT NULL,
   `data_nasc` date NOT NULL,
   `full_name` varchar(50) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
@@ -100,9 +101,9 @@ CREATE TABLE `jogador` (
 -- Extraindo dados da tabela `jogador`
 --
 
-INSERT INTO `jogador` (`id`, `username`, `data_nasc`, `full_name`, `password`, `story_progress`, `usertype`) VALUES
-(2, 'jogadorzinho', '2012-12-07', 'Juca Junior', 'Juca1234', NULL, 'player'),
-(3, 'vinizinho', '2012-12-11', 'Vini Ian', 'Vini1234', NULL, 'player');
+INSERT INTO `jogador` (`id`, `username`, `nickname`, `data_nasc`, `full_name`, `password`, `story_progress`, `usertype`) VALUES
+(2, 'jogadorzinho', 'Omelhor123', '2012-12-07', 'Juca Junior', 'Juca1234', NULL, 'player'),
+(3, 'vinizinho', 'Variation Glass','2012-12-11', 'Vini Ian', 'Vini1234', NULL, 'player');
 
 -- --------------------------------------------------------
 

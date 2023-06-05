@@ -11,6 +11,7 @@ if(isset($_POST['register']))
     //na inserçaõ de um novo campo deve fazer mais um: 
     //$nomeDaSuaVariavel=$_POST['nome colocado no id/nome do campo do form']
     $username=$_POST['username'];
+    $nickname=$_POST['nickname']
     $user_full_name=$_POST['name'];
     $user_data_nasc=$_POST['data_nasc'];
     $user_password=$_POST['password'];
@@ -123,12 +124,14 @@ if(isset($_POST['register']))
             $sql="INSERT INTO jogador
             /*nomes que estao no banco de dados (tem que ser igual e na mesma ordem)*/
             (username,
+            nickname,
             data_nasc,
             usertype,
             full_name,
             password) VALUES 
             /*variaveis com valores do form (tem que estar na mesma ordem)*/
             ('$username',
+            '$nickname',
             '$user_data_nasc',
             '$user_type',
             '$user_full_name',
@@ -234,6 +237,12 @@ if(isset($_POST['register']))
               <div class="form-outline form-white mb-4">
                 <input type="text" id="typeUsername" name="username" class="form-control form-control-lg" required/>
                 <label class="form-label" for="typeUsername">Nome de usuário</label>
+              </div>
+
+                <!-- Campo de Apelido (Nickname) de usuário -->
+                <div class="form-outline form-white mb-4">
+                <input type="text" id="typeNickname" name="nickname" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typeNickname">Apelido de Usuário</label>
               </div>
 
               <!--Campo Nome completo-->  
