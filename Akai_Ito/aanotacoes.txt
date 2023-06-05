@@ -38,7 +38,7 @@ Fazendo o novo campo aparecer na tela de edição
 
 
 
---------------------- Caso precise adicionar um campo em jogador ------------------------------
+--------------------- Caso precise adicionar um campo em anunciante ------------------------------
 
 Fazendo o novo campo no registro e salvando ele 
 
