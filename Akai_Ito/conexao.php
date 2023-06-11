@@ -1,11 +1,11 @@
 <?php
 /* Computadores da faculdade deve ser:*/
-/**/
-$host="localhost:3307";
+/*$host="localhost:3307";*/
+
 
 /*Computador pessoal deve ser:
-/*$host="localhost";*/
-
+/**/
+$host="localhost";
 
 $user="eu";
 
