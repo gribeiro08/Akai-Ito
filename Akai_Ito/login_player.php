@@ -58,7 +58,7 @@
             </div>
 
             <div>
-              <p class="mb-0">Não possui uma conta? <a href="register_player.php" class="text-white-50 fw-bold">Registre-se</a>
+              <p class="mb-0">Não possui uma conta? <a href="register.php" class="text-white-50 fw-bold">Registre-se</a>
               </p>
             </div>
             </form>
