@@ -110,7 +110,7 @@ if(isset($_POST['register']))
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="register" value="Registrar anuncio">
+                <input class="btn btn-outline-light btn-lg px-5" type="submit" name="register" value="Registrar publicação">
               </div>
 
             </div>
