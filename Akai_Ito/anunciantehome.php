@@ -43,7 +43,7 @@ session_start();
         <ul>
             <li><a href="anunciantehome.php">Inicio</a></li>
             <li><a href="anunciante_anuncios.php">Anuncios</a></li>
-            <li><a href="anunciante_perfil.php">Perfil</a></li>
+            <li><a id="perfil" href="anunciante_perfil.php">Perfil</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>

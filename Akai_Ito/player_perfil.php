@@ -87,7 +87,7 @@ include("conexao.php");
             <h4>Tem certeza que deseja deletar esta conta?</h4> 
             <form action="" method="post" >
                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                <input type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
+                <input id="c_deletar" type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
             </form>
         </div>
 
@@ -159,7 +159,7 @@ include("conexao.php");
     
     <div style="text-align:center">
         <a href="player_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
-        <a href="player_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
+        <a id="deletar" href="player_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
     </div>
        
 </section>

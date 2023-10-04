@@ -84,7 +84,7 @@ include("conexao.php");
             <h4>Tem certeza que deseja deletar esta conta?</h4> 
             <form action="" method="post" >
                 <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                <input type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
+                <input id="c_deletar" type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
             </form>
         </div>
 
@@ -157,7 +157,7 @@ include("conexao.php");
 <!--botao deletar roda o if dentro desta mesma pagina, botao editar direciona para a pagina de ediçao-->    
     <div style="text-align:center">
         <a href="anunciante_edit_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Editar conta</a></li>
-        <a href="anunciante_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
+        <a id="deletar" href="anunciante_perfil.php?id=<?php echo $id_log; ?>" class="custom-btn btn-4">Deletar conta</a></li>
     </div>
     
        
