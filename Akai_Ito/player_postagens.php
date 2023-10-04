@@ -90,7 +90,7 @@ if(isset($_GET['id_d']))
         <h4>Tem certeza que deseja deletar esta publicação?</h4>
         <form action="" method="post" >
             <input type="hidden" name="id_d" value="<?php echo $_GET['id_d'] ?>">
-            <input type="submit" name="deletar"  class="custom-btn btn-4" value="Deletar">
+            <input type="submit" id="deletar" name="deletar"  class="custom-btn btn-4" value="Deletar">
         </form>
     </div>
 

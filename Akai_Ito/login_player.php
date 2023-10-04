@@ -42,18 +42,18 @@
               <p class="text-white-50 mb-5">Por favor insira seu login e senha!</p>
 
               <div class="form-outline form-white mb-4">
-                <input type="text" id="typeUsername" name="username" class="form-control form-control-lg" required/>
-                <label class="form-label" for="typeUsername">Nome de usuário</label>
+                <input type="text" id="typeUsernamePlayer" name="username" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typeUsernamePlayer">Nome de usuário</label>
               </div>
 
               <div class="form-outline form-white mb-4">
-                <input type="password" name="password" id="typePasswordX" class="form-control form-control-lg" required/>
-                <label class="form-label" for="typePasswordX">Senha</label>
+                <input type="password" name="password" id="typePasswordPlayer" class="form-control form-control-lg" required/>
+                <label class="form-label" for="typePasswordPlayer">Senha</label>
               </div>
 
 <!--              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Esqueceu sua senha?</a></p> -->
 
-              <button class="btn btn-outline-light btn-lg px-5" type="submit" name="submit">Login</button>
+              <button class="btn btn-outline-light btn-lg px-5" id="loginBt" type="submit" name="submit">Login</button>
 
             </div>
 

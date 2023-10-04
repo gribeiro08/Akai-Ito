@@ -58,7 +58,7 @@
                     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
             </div>
             <div style="text-align:center">
-                <a href="login_adm.php" class="custom-btn btn-4">Login ADM</a>
+                <a href="login_adm.php" id="login_adm_pg" class="custom-btn btn-4">Login ADM</a>
             </div>
      
 </section>  

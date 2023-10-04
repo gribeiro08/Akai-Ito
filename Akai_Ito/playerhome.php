@@ -47,7 +47,7 @@ include("conexao.php");
             <li><a href="player_game.php">Jogo</a></li>
             <li><a href="player_perfil.php">Perfil</a></li>
             <li><a href="player_anuncios.php">Anuncios</a></li>
-            <li><a href="player_postagens.php">Minhas postagens</a></li>
+            <li><a href="player_postagens.php" id="m_posts">Minhas postagens</a></li>
             <li><a href="logout.php" class="custom-btn btn-4">Logout</a></li>
         </ul>
     </nav>
@@ -62,7 +62,7 @@ include("conexao.php");
 
 <!--btn para cadastrar nova publicação-->
     <div style="text-align:center">
-        <a href="register_publicacao.php" class="custom-btn btn-4">Cadastrar nova publicação</a>
+        <a href="register_publicacao.php" id="novaPublicacao" class="custom-btn btn-4">Cadastrar nova publicação</a>
     </div>
 
 

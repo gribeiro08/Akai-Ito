@@ -24,8 +24,8 @@
 
         <ul>
             <li><a href="index.php">Home</a></li>
-            <li><a href="sobre.php">Sobre</a></li>
-            <a href="register.php" class="custom-btn btn-4">Registrar</a>
+            <li><a href="sobre.php" name="About">Sobre</a></li>
+            <a href="register.php" name="registrar" class="custom-btn btn-4">Registrar</a>
         </ul>
     </nav>
 
@@ -50,14 +50,14 @@
 
 <div class="hero-section">
   <div class="card-grid">
-    <a class="card" href="login_player.php">
+    <a class="card" href="login_player.php" id="login_jogador_pg">
       <div class="card__background" style="background-image: url(https://www.financialexpress.com/wp-content/uploads/2022/12/Untitled-design-2022-12-07T101207.595.jpg)"></div>
       <div class="card__content">
         <p class="card__category">Login</p>
         <h3 class="card__heading">Login de jogador</h3>
       </div>
     </a>
-    <a class="card" href="login_anunciante.php">
+    <a class="card" href="login_anunciante.php" id="login_anunciante_pg">
       <div class="card__background" style="background-image: url(https://www.qualitysmi.com.br/imagens/thumbs/parametros-para-resultado-organico.jpg)"></div>
       <div class="card__content">
         <p class="card__category">Login</p>

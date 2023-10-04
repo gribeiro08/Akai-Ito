@@ -53,7 +53,6 @@ if(isset($_POST['register']))
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="contato.php">Contato</a></li>
-            <a href="register.php" class="custom-btn btn-4">Register</a>
         </ul>
     </nav>
 
@@ -131,7 +130,7 @@ if(isset($_POST['register']))
                 confirm_password.onkeyup = validatePassword;
             </script>
 
-              <button class="btn btn-outline-light btn-lg px-5" type="submit" name="register">Registrar</button>
+              <button class="btn btn-outline-light btn-lg px-5" id="cadastrarUser" type="submit" name="register">Registrar</button>
 
             </div>
             </form>
