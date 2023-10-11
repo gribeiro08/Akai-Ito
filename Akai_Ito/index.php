@@ -25,7 +25,7 @@
         <ul>
             <li><a href="index.php">Home</a></li>
             <li><a href="sobre.php" name="About">Sobre</a></li>
-            <a href="register.php" name="registrar" class="custom-btn btn-4">Registrar</a>
+            <a href="register.php" id="registrar" name="registrar" class="custom-btn btn-4">Registrar</a>
         </ul>
     </nav>
 
